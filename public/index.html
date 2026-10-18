@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>SGPPL-2 Live Auction</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body class="auction-page">
+<header class="topbar">
+  <div class="brand">🏆 <span>SGPPL - 2</span><small>CRICKET AUCTION</small></div>
+  <div class="live">● LIVE AUCTION</div>
+  <a href="/register.html" class="admin-link">Player Registration</a>
+<a href="/admin.html" class="admin-link">Admin</a>
+</header>
+
+<main class="auction-grid">
+  <aside class="panel teams-panel">
+    <h2>TEAMS & POINTS</h2>
+    <div id="teams"></div>
+  </aside>
+
+  <section class="center">
+    <div id="playerCard" class="player-card empty">
+      <div class="empty-text">AUCTION WILL START SOON</div>
+    </div>
+
+    <div class="bidbar panel">
+      <div>
+        <div class="muted">CURRENT BID</div>
+        <strong id="currentBid">0</strong>
+      </div>
+      <div>
+        <div class="muted">HIGHEST BIDDER</div>
+        <strong id="highestTeam">—</strong>
+      </div>
+    </div>
+
+    <div class="panel">
+      <h2>PLAYER AUCTION LIST</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Photo</th><th>Name</th><th>Role</th><th>Village</th><th>Status</th><th>Result</th></tr></thead>
+          <tbody id="players"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <aside class="panel history-panel">
+    <h2>BID HISTORY</h2>
+    <div id="history"></div>
+  </aside>
+</main>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/app.js"></script>
+</body>
+</html>

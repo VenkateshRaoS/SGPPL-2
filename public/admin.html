@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SGPPL - 2 Admin</title>
+
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#eef2f7;color:#172033}
+button,input{font:inherit}
+button{cursor:pointer}
+button:disabled{opacity:.45;cursor:not-allowed}
+.hidden{display:none!important}
+
+.top{
+  position:sticky;top:0;z-index:50;background:#071a35;color:#fff;
+  padding:15px 22px;display:flex;align-items:center;justify-content:space-between
+}
+.brand{font-size:21px;font-weight:800}
+.brand small{display:block;font-size:11px;opacity:.7;margin-top:3px}
+
+.wrap{max-width:1500px;margin:20px auto;padding:0 15px}
+
+.login{
+  max-width:420px;margin:90px auto;background:#fff;padding:30px;
+  border-radius:18px;box-shadow:0 8px 30px #0001
+}
+.field{margin-bottom:15px}
+.field label{display:block;font-weight:700;margin-bottom:7px}
+.field input,.verify input{
+  width:100%;padding:12px;border:1px solid #cbd5e1;border-radius:9px
+}
+
+.btn{border:0;border-radius:9px;padding:10px 14px;font-weight:800}
+.primary{background:#1463ff;color:#fff}
+.success{background:#159447;color:#fff}
+.danger{background:#d92d20;color:#fff}
+.dark{background:#172033;color:#fff}
+.light{background:#e8edf5;color:#172033}
+.warning{background:#f5a623;color:#172033}
+.small{padding:7px 9px;font-size:12px}
+
+.nav{display:flex;gap:10px;margin-bottom:16px}
+.nav button{
+  background:#fff;border:0;border-radius:12px;padding:15px 25px;
+  font-weight:800;box-shadow:0 3px 15px #0001
+}
+.nav .active{background:#1463ff;color:#fff}
+
+.card{
+  background:#fff;border-radius:15px;padding:18px;margin-bottom:18px;
+  box-shadow:0 3px 15px #0000000d
+}
+h1,h2,h3{margin-top:0}
+.muted{color:#68758a}
+.error{color:#c62828;margin-top:10px}
+.ok{color:#12823b;margin-top:10px}
+
+.verify{display:flex;gap:10px;max-width:700px}
+.verify input{flex:1}
+
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.stat{background:#f5f7fa;border-radius:12px;padding:15px}
+.stat b{display:block;font-size:26px;margin-top:5px}
+
+.teams{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.team{border:1px solid #dce3ed;border-radius:12px;padding:12px}
+.team strong{display:block}
+.money{font-size:20px;font-weight:900;margin:7px 0}
+
+.table-wrap{overflow:auto}
+.table{width:100%;border-collapse:collapse;min-width:1000px}
+.table th,.table td{
+  padding:10px;border-bottom:1px solid #e5eaf0;
+  text-align:left;vertical-align:middle
+}
+.table th{background:#f5f7fa}
+
+.thumb{
+  width:52px;height:52px;object-fit:cover;
+  border-radius:9px;background:#ddd
+}
+
+.status{
+  display:inline-block;border-radius:20px;padding:5px 9px;
+  font-size:11px;font-weight:900
+}
+.PENDING{background:#fff3cd;color:#856404}
+.CONFIRMED{background:#dbeafe;color:#1d4ed8}
+.SOLD{background:#dcfce7;color:#166534}
+.UNSOLD{background:#fee2e2;color:#991b1b}
+.LIVE{background:#ffe4e6;color:#be123c}
+.IDLE{background:#e8edf5;color:#475569}
+
+.auction-layout{
+  display:grid;grid-template-columns:minmax(0,1fr) 350px;gap:18px
+}
+.player{
+  display:grid;grid-template-columns:300px minmax(0,1fr);gap:22px
+}
+.player-photo{
+  width:100%;height:350px;object-fit:cover;
+  border-radius:15px;background:#ddd
+}
+
+.big-bid{font-size:46px;font-weight:900;color:#1463ff;margin:10px 0}
+.highest{font-size:21px;font-weight:800}
+
+.bid-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:8px;margin-top:15px
+}
+.bid-grid button{
+  padding:13px;border:0;border-radius:9px;
+  background:#071a35;color:#fff;font-weight:800
+}
+.bid-grid button:disabled{opacity:.3;cursor:not-allowed}
+
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.history{max-height:330px;overflow:auto}
+.history-row{
+  display:flex;justify-content:space-between;
+  gap:10px;padding:10px;border-bottom:1px solid #eee
+}
+.history-row b{color:#1463ff}
+
+.queue{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.mini{
+  border:1px solid #dce3ed;border-radius:12px;padding:12px;
+  background:#fff;min-height:130px
+}
+.mini:hover{border-color:#1463ff}
+.mini img{
+  width:64px;height:64px;object-fit:cover;
+  border-radius:9px;float:left;margin-right:10px
+}
+.mini:after{content:"";display:block;clear:both}
+.mini button{margin-top:9px}
+
+.section-head{
+  display:flex;justify-content:space-between;
+  align-items:center;gap:10px;flex-wrap:wrap
+}
+.notice{
+  padding:12px;border-radius:10px;
+  background:#fff8db;color:#715500;margin-bottom:12px
+}
+.undo-section{
+  border-top:1px solid #e5eaf0;padding-top:12px;margin-top:14px
+}
+.round-note{
+  background:#f2edff;color:#5532a6;padding:12px;
+  border-radius:10px;margin-bottom:12px
+}
+
+@media(max-width:1050px){
+  .teams{grid-template-columns:repeat(2,1fr)}
+  .auction-layout{grid-template-columns:1fr}
+}
+@media(max-width:700px){
+  .stats,.teams,.queue{grid-template-columns:1fr}
+  .player{grid-template-columns:1fr}
+  .player-photo{height:270px}
+  .verify{flex-direction:column}
+  .big-bid{font-size:36px}
+  .nav button{flex:1;padding:13px 8px}
+}
+</style>
+</head>
+
+<body>
+
+<!-- ADMIN LOGIN -->
+<div id="loginView" class="login">
+  <h1>SGPPL - 2</h1>
+  <p class="muted">Admin Login</p>
+
+  <form id="loginForm">
+    <div class="field">
+      <label for="username">Username</label>
+      <input id="username" required autocomplete="username">
+    </div>
+
+    <div class="field">
+      <label for="password">Password</label>
+      <input id="password" type="password" required autocomplete="current-password">
+    </div>
+
+    <button class="btn primary" style="width:100%">LOGIN</button>
+    <div id="loginMsg"></div>
+  </form>
+</div>
+
+<!-- ADMIN APPLICATION -->
+<div id="appView" class="hidden">
+
+  <header class="top">
+    <div class="brand">
+      SGPPL - 2
+      <small>ADMIN PANEL</small>
+    </div>
+    <button id="logoutBtn" class="btn danger">Logout</button>
+  </header>
+
+  <main class="wrap">
+
+    <!-- MAIN MENU: TWO BUTTONS -->
+    <div class="nav">
+      <button id="registrationTab" class="active">REGISTRATION</button>
+      <button id="auctionTab">AUCTION</button>
+    </div>
+
+    <!-- REGISTRATION VIEW -->
+    <section id="registrationView">
+
+      <div class="card">
+        <h2>UTR Verification</h2>
+        <p class="muted">
+          Paste the UTR exactly as it appears in the UPI/bank transaction list.
+        </p>
+
+        <form id="verifyForm" class="verify">
+          <input
+            id="utrInput"
+            placeholder="Enter UTR / Transaction Number"
+            required
+          >
+          <button class="btn success">VERIFY UTR</button>
+        </form>
+
+        <div id="verifyMsg"></div>
+      </div>
+
+      <div class="card">
+        <div class="section-head">
+          <h2>All Registered Players</h2>
+          <button id="refreshBtn" class="btn light">Refresh</button>
+        </div>
+
+        <p class="muted">
+          Players appear in registration order. Confirmed players can enter the auction.
+          Sold and unsold players can be sent back for another auction.
+        </p>
+
+        <div class="table-wrap">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Photo</th>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Village</th>
+                <th>Role</th>
+                <th>UTR</th>
+                <th>Status</th>
+                <th>Result</th>
+                <th>Auction Action</th>
+                <th>Remove</th>
+              </tr>
+            </thead>
+            <tbody id="registrationTable"></tbody>
+          </table>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- AUCTION VIEW -->
+    <section id="auctionView" class="hidden">
+
+      <div class="card">
+        <div class="stats">
+          <div class="stat">
+            Registered
+            <b id="statTotal">0</b>
+          </div>
+          <div class="stat">
+            Waiting for Auction
+            <b id="statWaiting">0</b>
+          </div>
+          <div class="stat">
+            Sold
+            <b id="statSold">0</b>
+          </div>
+          <div class="stat">
+            Unsold
+            <b id="statUnsold">0</b>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Team Budgets — ₹15,000 Each</h2>
+        <div id="teamsBox" class="teams"></div>
+      </div>
+
+      <div class="auction-layout">
+
+        <div>
+          <!-- LIVE AUCTION -->
+          <div class="card">
+            <div class="section-head">
+              <h2>Live Auction</h2>
+              <span id="auctionStatus" class="status IDLE">IDLE</span>
+            </div>
+            <div id="liveBox"></div>
+          </div>
+
+          <!-- CONFIRMED PLAYER QUEUE -->
+          <div class="card">
+            <div class="section-head">
+              <h2>Player List</h2>
+              <span class="muted">Registration order</span>
+            </div>
+            <p class="muted">
+              Select a confirmed player to start bidding. The next confirmed player
+              starts automatically after SOLD or UNSOLD.
+            </p>
+            <div id="queueBox" class="queue"></div>
+          </div>
+        </div>
+
+        <!-- BID HISTORY -->
+        <div>
+          <div class="card">
+            <h2>Live Bid History</h2>
+            <div id="historyBox" class="history"></div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- SOLD PLAYERS -->
+      <div class="card">
+        <h2>Sold Players</h2>
+        <p class="muted">
+          Use EDIT / RE-AUCTION if a player was sold by mistake. The previous sale
+          will be reversed and that player will return to the live auction.
+        </p>
+
+        <div class="table-wrap">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Village</th>
+                <th>Team</th>
+                <th>Sale Amount</th>
+                <th>Edit / Re-auction</th>
+                <th>Remove</th>
+              </tr>
+            </thead>
+            <tbody id="soldTable"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- UNSOLD PLAYERS / ROUND TWO -->
+      <div class="card">
+        <h2>Unsold Players — Round 2</h2>
+
+        <div class="round-note">
+          Select ROUND 2 / RE-AUCTION to bring an unsold player back into the live
+          auction. If another player is live, that player returns to the waiting list.
+        </div>
+
+        <div class="table-wrap">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Village</th>
+                <th>Role</th>
+                <th>Round 2 / Re-auction</th>
+                <th>Remove</th>
+              </tr>
+            </thead>
+            <tbody id="unsoldTable"></tbody>
+          </table>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+</div>
+
+<script>
+let state = null;
+let timer = null;
+
+const $ = id => document.getElementById(id);
+
+// Escape player/team data before inserting it into HTML.
+function esc(value) {
+  return String(value ?? "").replace(/[&<>"']/g, char => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#039;"
+  }[char]));
+}
+
+function money(value) {
+  return Number(value || 0).toLocaleString("en-IN");
+}
+
+async function api(url, options = {}) {
+  const response = await fetch(url, {
+    credentials: "same-origin",
+    ...options
+  });
+
+  const data = await response.json().catch(() => ({}));
+
+  if (!response.ok) {
+    throw new Error(data.error || "Request failed.");
+  }
+
+  return data;
+}
+
+// -------------------- LOGIN --------------------
+
+$("loginForm").addEventListener("submit", async event => {
+  event.preventDefault();
+  $("loginMsg").textContent = "";
+
+  try {
+    await api("/api/admin/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        username: $("username").value.trim(),
+        password: $("password").value
+      })
+    });
+
+    await openApp();
+  } catch (err) {
+    $("loginMsg").className = "error";
+    $("loginMsg").textContent = err.message;
+  }
+});
+
+async function openApp() {
+  $("loginView").classList.add("hidden");
+  $("appView").classList.remove("hidden");
+
+  await loadState();
+
+  if (!timer) {
+    timer = setInterval(loadState, 2000);
+  }
+}
+
+$("logoutBtn").onclick = async () => {
+  try {
+    await api("/api/admin/logout", {
+      method: "POST"
+    });
+  } catch {}
+
+  clearInterval(timer);
+  location.reload();
+};
+
+// -------------------- MAIN TABS --------------------
+
+$("registrationTab").onclick = () => {
+  $("registrationTab").classList.add("active");
+  $("auctionTab").classList.remove("active");
+
+  $("registrationView").classList.remove("hidden");
+  $("auctionView").classList.add("hidden");
+};
+
+$("auctionTab").onclick = () => {
+  $("auctionTab").classList.add("active");
+  $("registrationTab").classList.remove("active");
+
+  $("registrationView").classList.add("hidden");
+  $("auctionView").classList.remove("hidden");
+
+  loadState();
+};
+
+$("refreshBtn").onclick = loadState;
+
+// -------------------- VERIFY UTR --------------------
+
+$("verifyForm").addEventListener("submit", async event => {
+  event.preventDefault();
+
+  $("verifyMsg").textContent = "";
+
+  try {
+    const data = await api("/api/admin/verify-utr", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        utr: $("utrInput").value.trim()
+      })
+    });
+
+    $("verifyMsg").className = "ok";
+    $("verifyMsg").textContent = data.message;
+
+    $("utrInput").value = "";
+
+    await loadState();
+  } catch (err) {
+    $("verifyMsg").className = "error";
+    $("verifyMsg").textContent = err.message;
+  }
+});
+
+// -------------------- LOAD DATA --------------------
+
+async function loadState() {
+  try {
+    state = await api("/api/admin/state");
+    render();
+  } catch (err) {
+    if (
+      err.message.toLowerCase().includes("login") ||
+      err.message.toLowerCase().includes("admin")
+    ) {
+      clearInterval(timer);
+      $("appView").classList.add("hidden");
+      $("loginView").classList.remove("hidden");
+    }
+  }
+}
+
+// -------------------- RENDER EVERYTHING --------------------
+
+function render() {
+  if (!state) return;
+
+  const players = state.allPlayers || [];
+
+  $("statTotal").textContent = players.length;
+
+  $("statWaiting").textContent = players.filter(
+    p => p.status === "CONFIRMED" && p.auctionEligible
+  ).length;
+
+  $("statSold").textContent = players.filter(
+    p => p.status === "SOLD"
+  ).length;
+
+  $("statUnsold").textContent = players.filter(
+    p => p.status === "UNSOLD"
+  ).length;
+
+  renderRegistrations(players);
+  renderTeams();
+  renderLive();
+
+  renderQueue(
+    players.filter(
+      p => p.status === "CONFIRMED" && p.auctionEligible
+    )
+  );
+
+  renderSold(players.filter(p => p.status === "SOLD"));
+  renderUnsold(players.filter(p => p.status === "UNSOLD"));
+}
+
+// -------------------- REGISTRATION TABLE --------------------
+
+function renderRegistrations(players) {
+  $("registrationTable").innerHTML = players.length
+    ? players.map((p, index) => {
+        let auctionAction = `<span class="muted">Verify UTR first</span>`;
+
+        if (p.status === "CONFIRMED" && p.auctionEligible) {
+          auctionAction = `
+            <button
+              class="btn primary small"
+              onclick="startPlayer('${esc(p.id)}')"
+            >
+              START AUCTION
+            </button>
+          `;
+        } else if (p.status === "SOLD") {
+          auctionAction = `
+            <button
+              class="btn warning small"
+              onclick="reAuctionPlayer('${esc(p.id)}')"
+            >
+              EDIT / RE-AUCTION
+            </button>
+          `;
+        } else if (p.status === "UNSOLD") {
+          auctionAction = `
+            <button
+              class="btn primary small"
+              onclick="reAuctionPlayer('${esc(p.id)}')"
+            >
+              ROUND 2
+            </button>
+          `;
+        }
+
+        return `
+          <tr>
+            <td>${index + 1}</td>
+
+            <td>
+              <img class="thumb" src="${esc(p.photoUrl)}" alt="">
+            </td>
+
+            <td><b>${esc(p.name)}</b></td>
+            <td>${esc(p.phone)}</td>
+            <td>${esc(p.village)}</td>
+            <td>${esc(p.role)}</td>
+            <td>${esc(p.utr)}</td>
+
+            <td>
+              <span class="status ${esc(p.status)}">
+                ${esc(p.status)}
+              </span>
+            </td>
+
+            <td>
+              ${
+                p.status === "SOLD"
+                  ? esc(p.soldTeam) + " — ₹" + money(p.soldPoints)
+                  : p.status === "UNSOLD"
+                    ? "UNSOLD"
+                    : "-"
+              }
+            </td>
+
+            <td>${auctionAction}</td>
+
+            <td>
+              <button
+                class="btn danger small"
+                onclick="removePlayer('${esc(p.id)}')"
+              >
+                REMOVE
+              </button>
+            </td>
+          </tr>
+        `;
+      }).join("")
+    : `<tr><td colspan="11" class="muted">No registered players.</td></tr>`;
+}
+
+// -------------------- TEAM BUDGETS --------------------
+
+function renderTeams() {
+  const teams = state.teams || [];
+
+  $("teamsBox").innerHTML = teams.length
+    ? teams.map(team => `
+        <div class="team">
+          <strong>${esc(team.code)} — ${esc(team.name)}</strong>
+
+          <div class="money">₹${money(team.remainingPoints)}</div>
+
+          <div class="muted">
+            Remaining points
+          </div>
+
+          <div class="muted" style="margin-top:6px">
+            Spent: ₹${money(team.spentPoints)}
+          </div>
+
+          <div class="muted" style="margin-top:4px">
+            Players: ${team.playerCount} / ${team.maxPlayers}
+          </div>
+        </div>
+      `).join("")
+    : `<p class="muted">No teams found.</p>`;
+}
+
+// -------------------- UNDO BUTTON --------------------
+
+function undoButtonHTML() {
+  const canUndo = Boolean(state?.auction?.canUndo);
+
+  return `
+    <div class="undo-section">
+      <button
+        class="btn warning"
+        onclick="undoLastAction()"
+        ${canUndo ? "" : "disabled"}
+      >
+        ↶ UNDO LAST ACTION
+      </button>
+
+      <p class="muted">
+        ${
+          canUndo
+            ? "Undo the most recent auction action."
+            : "No recent auction action to undo."
+        }
+      </p>
+    </div>
+  `;
+}
+
+// -------------------- LIVE AUCTION --------------------
+
+function renderLive() {
+  const auction = state.auction;
+  const player = state.currentPlayer;
+
+  $("auctionStatus").textContent = auction?.status || "IDLE";
+  $("auctionStatus").className =
+    "status " + (auction?.status || "IDLE");
+
+  if (!player || auction?.status !== "LIVE") {
+    $("liveBox").innerHTML = `
+      <div class="notice">
+        No player is currently live. Select a confirmed player from the player list.
+      </div>
+
+      ${undoButtonHTML()}
+    `;
+
+    $("historyBox").innerHTML = `
+      <div class="muted">No live bid history.</div>
+    `;
+
+    return;
+  }
+
+  const nextBid =
+    auction.currentBid === 0
+      ? 50
+      : auction.currentBid < 500
+        ? auction.currentBid + 50
+        : auction.currentBid + 100;
+
+  const teams = state.teams || [];
+
+  $("liveBox").innerHTML = `
+    <div class="player">
+
+      <img class="player-photo" src="${esc(player.photoUrl)}" alt="Player photo">
+
+      <div>
+        <h2>${esc(player.name)}</h2>
+
+        <p>
+          <b>Village:</b> ${esc(player.village)}
+        </p>
+
+        <p>
+          <b>Role:</b> ${esc(player.role)}
+        </p>
+
+        <p class="muted">Starting price: ₹50</p>
+
+        <div class="big-bid">
+          ₹${money(auction.currentBid)}
+        </div>
+
+        <div class="highest">
+          Highest bidder:
+          ${auction.highestTeam ? esc(auction.highestTeam) : "No bid yet"}
+        </div>
+
+        <p class="muted">
+          Next bid: ₹${money(nextBid)}
+        </p>
+
+        <div class="bid-grid">
+          ${teams.map(team => {
+            const canBid =
+              team.playerCount < team.maxPlayers &&
+              team.remainingPoints >= nextBid;
+
+            return `
+              <button
+                ${canBid ? "" : "disabled"}
+                onclick="placeBid('${esc(team.code)}')"
+              >
+                ${esc(team.code)} BID
+                <br>
+                <small>₹${money(nextBid)}</small>
+              </button>
+            `;
+          }).join("")}
+        </div>
+
+        <div class="actions">
+          <button
+            class="btn success"
+            onclick="auctionAction('sold')"
+            ${auction.highestTeam ? "" : "disabled"}
+          >
+            SOLD
+          </button>
+
+          <button
+            class="btn light"
+            onclick="auctionAction('unsold')"
+          >
+            UNSOLD
+          </button>
+        </div>
+
+        ${undoButtonHTML()}
+      </div>
+    </div>
+  `;
+
+  const history = auction.bidHistory || [];
+
+  $("historyBox").innerHTML = history.length
+    ? [...history].reverse().map((bid, index) => `
+        <div class="history-row">
+          <span>
+            <b>${history.length - index}.</b>
+            ${esc(bid.team)}
+          </span>
+          <b>₹${money(bid.amount)}</b>
+        </div>
+      `).join("")
+    : `<div class="muted">No bids yet.</div>`;
+}
+
+// -------------------- CONFIRMED PLAYER QUEUE --------------------
+
+function renderQueue(players) {
+  $("queueBox").innerHTML = players.length
+    ? players.map((player, index) => `
+        <div class="mini">
+          <img src="${esc(player.photoUrl)}" alt="">
+
+          <b>${index + 1}. ${esc(player.name)}</b>
+
+          <div class="muted">${esc(player.village)}</div>
+          <div class="muted">${esc(player.role)}</div>
+
+          <div style="clear:both"></div>
+
+          <button
+            class="btn primary small"
+            onclick="startPlayer('${esc(player.id)}')"
+          >
+            START AUCTION
+          </button>
+        </div>
+      `).join("")
+    : `<p class="muted">No confirmed players waiting.</p>`;
+}
+
+// -------------------- SOLD PLAYERS --------------------
+
+function renderSold(players) {
+  $("soldTable").innerHTML = players.length
+    ? players.map((player, index) => `
+        <tr>
+          <td>${index + 1}</td>
+          <td><b>${esc(player.name)}</b></td>
+          <td>${esc(player.village)}</td>
+          <td>${esc(player.soldTeam)}</td>
+          <td>₹${money(player.soldPoints)}</td>
+
+          <td>
+            <button
+              class="btn warning small"
+              onclick="reAuctionPlayer('${esc(player.id)}')"
+            >
+              EDIT / RE-AUCTION
+            </button>
+          </td>
+
+          <td>
+            <button
+              class="btn danger small"
+              onclick="removePlayer('${esc(player.id)}')"
+            >
+              REMOVE
+            </button>
+          </td>
+        </tr>
+      `).join("")
+    : `<tr><td colspan="7" class="muted">No sold players.</td></tr>`;
+}
+
+// -------------------- UNSOLD PLAYERS / ROUND TWO --------------------
+
+function renderUnsold(players) {
+  $("unsoldTable").innerHTML = players.length
+    ? players.map((player, index) => `
+        <tr>
+          <td>${index + 1}</td>
+          <td><b>${esc(player.name)}</b></td>
+          <td>${esc(player.village)}</td>
+          <td>${esc(player.role)}</td>
+
+          <td>
+            <button
+              class="btn primary small"
+              onclick="reAuctionPlayer('${esc(player.id)}')"
+            >
+              ROUND 2 / RE-AUCTION
+            </button>
+          </td>
+
+          <td>
+            <button
+              class="btn danger small"
+              onclick="removePlayer('${esc(player.id)}')"
+            >
+              REMOVE
+            </button>
+          </td>
+        </tr>
+      `).join("")
+    : `<tr><td colspan="6" class="muted">No unsold players.</td></tr>`;
+}
+
+// -------------------- START AUCTION --------------------
+
+async function startPlayer(id) {
+  if (state?.auction?.status === "LIVE") {
+    alert("A player is already live. Finish or undo the current auction first.");
+    return;
+  }
+
+  try {
+    await api("/api/admin/auction/start", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ playerId: id })
+    });
+
+    $("auctionTab").click();
+    await loadState();
+  } catch (err) {
+    alert(err.message);
+  }
+}
+
+// -------------------- BID --------------------
+
+async function placeBid(teamCode) {
+  try {
+    await api("/api/admin/auction/bid", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ teamCode })
+    });
+
+    await loadState();
+  } catch (err) {
+    alert(err.message);
+    await loadState();
+  }
+}
+
+// -------------------- SOLD / UNSOLD --------------------
+
+async function auctionAction(action) {
+  if (
+    action === "sold" &&
+    !state?.auction?.highestTeam
+  ) {
+    alert("At least one team must bid before SOLD.");
+    return;
+  }
+
+  try {
+    await api("/api/admin/auction/" + action, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: "{}"
+    });
+
+    await loadState();
+  } catch (err) {
+    alert(err.message);
+  }
+}
+
+// -------------------- UNDO LAST ACTION --------------------
+
+async function undoLastAction() {
+  if (!state?.auction?.canUndo) {
+    alert("There is no recent action to undo.");
+    return;
+  }
+
+  const confirmed = confirm(
+    "Undo the most recent auction action? The previous auction state will be restored."
+  );
+
+  if (!confirmed) return;
+
+  try {
+    await api("/api/admin/auction/undo", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: "{}"
+    });
+
+    await loadState();
+  } catch (err) {
+    alert(err.message);
+  }
+}
+
+// -------------------- SOLD / UNSOLD RE-AUCTION --------------------
+
+async function reAuctionPlayer(id) {
+  const player = (state?.allPlayers || []).find(
+    item => String(item.id) === String(id)
+  );
+
+  if (!player) {
+    alert("Player not found.");
+    return;
+  }
+
+  let message;
+
+  if (player.status === "SOLD") {
+    message =
+      `Send ${player.name} back into the live auction?\n\n` +
+      "The previous sale will be reversed and the old team will receive the points back.";
+  } else {
+    message =
+      `Bring ${player.name} back for Round 2?\n\n` +
+      "The player will return to the live auction.";
+  }
+
+  if (!confirm(message)) return;
+
+  try {
+    await api(
+      "/api/admin/players/" + encodeURIComponent(id) + "/re-auction",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: "{}"
+      }
+    );
+
+    // Switch to the auction screen so the selected player is visible above.
+    $("auctionTab").click();
+    await loadState();
+  } catch (err) {
+    alert(err.message);
+  }
+}
+
+// -------------------- REMOVE PLAYER --------------------
+
+async function removePlayer(id) {
+  const player = (state?.allPlayers || []).find(
+    item => String(item.id) === String(id)
+  );
+
+  if (!player) return;
+
+  let message = "Remove this player permanently?";
+
+  if (player.status === "SOLD") {
+    message =
+      "Remove this SOLD player permanently?\n\n" +
+      "The sold amount will be returned to the team's budget.";
+  }
+
+  if (!confirm(message)) return;
+
+  try {
+    await api(
+      "/api/admin/players/" + encodeURIComponent(id),
+      { method: "DELETE" }
+    );
+
+    await loadState();
+  } catch (err) {
+    alert(err.message);
+  }
+}
+
+// -------------------- RESTORE ADMIN SESSION --------------------
+
+(async () => {
+  try {
+    await api("/api/admin/state");
+    await openApp();
+  } catch {
+    // Show login page if not authenticated.
+  }
+})();
+</script>
+
+</body>
+</html>
