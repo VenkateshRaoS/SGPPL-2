@@ -22,19 +22,14 @@
       min-height: 100vh;
     }
 
-    /* HEADER */
-
     .topbar {
       min-height: 78px;
       background: rgba(4, 18, 40, 0.98);
       border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-
       display: flex;
       align-items: center;
-
       padding: 0 5%;
       gap: 20px;
-
       color: white;
     }
 
@@ -58,7 +53,6 @@
 
     .nav {
       margin-left: auto;
-
       display: flex;
       gap: 10px;
     }
@@ -66,12 +60,9 @@
     .nav a {
       color: white;
       text-decoration: none;
-
       padding: 11px 17px;
-
       border: 1px solid rgba(255, 255, 255, 0.3);
       border-radius: 10px;
-
       font-weight: 700;
     }
 
@@ -83,8 +74,6 @@
       background: #1677ee;
       border-color: #1677ee;
     }
-
-    /* MAIN */
 
     .wrap {
       width: min(1080px, 92%);
@@ -108,23 +97,16 @@
       font-size: 17px;
     }
 
-    /* FORM CARD */
-
     .card {
       background: white;
       border-radius: 20px;
-
-      box-shadow:
-        0 22px 70px rgba(0, 0, 0, 0.35);
-
+      box-shadow: 0 22px 70px rgba(0, 0, 0, 0.35);
       overflow: hidden;
     }
 
     form {
       padding: 30px;
     }
-
-    /* GRID */
 
     .grid {
       display: grid;
@@ -148,59 +130,41 @@
       color: #dc2626;
     }
 
-    /* INPUTS */
-
     input,
     select {
       width: 100%;
       height: 48px;
-
       border: 1px solid #cbd5e1;
       border-radius: 10px;
-
       padding: 0 14px;
-
       font-size: 15px;
-
       background: white;
       color: #14213d;
-
       outline: none;
     }
 
     input:focus,
     select:focus {
       border-color: #1677ee;
-
-      box-shadow:
-        0 0 0 3px rgba(22, 119, 238, 0.12);
+      box-shadow: 0 0 0 3px rgba(22, 119, 238, 0.12);
     }
-
-    /* SECTION */
 
     .section {
       margin-top: 25px;
       padding-top: 24px;
-
       border-top: 1px solid #e5e7eb;
     }
 
     .section h2 {
       margin: 0 0 15px;
-
       font-size: 20px;
       color: #172554;
     }
 
-    /* FILE UPLOAD */
-
     .upload {
       border: 2px dashed #94a3b8;
-
       border-radius: 12px;
-
       padding: 18px;
-
       background: #f8fafc;
     }
 
@@ -217,108 +181,75 @@
       margin-top: 7px;
     }
 
-    /* PAYMENT */
-
     .payment {
       background: #eff6ff;
-
       border: 1px solid #bfdbfe;
-
       border-radius: 14px;
-
       padding: 20px;
     }
 
     .payment h2 {
       margin-top: 0;
       margin-bottom: 10px;
-
       color: #1d4ed8;
     }
 
     .payment p {
       margin: 0 0 18px;
-
       color: #475569;
     }
 
     .qrgrid {
       display: grid;
-
       grid-template-columns: 1fr 1fr;
-
       gap: 18px;
     }
 
     .qrbox {
-      min-height: 220px;
-
+      min-height: 280px;
       border: 2px dashed #94a3b8;
-
       border-radius: 14px;
-
       background: white;
-
       display: flex;
-
       align-items: center;
-
       justify-content: center;
-
       flex-direction: column;
-
       text-align: center;
-
       padding: 18px;
     }
 
     .qrbox strong {
       font-size: 17px;
-
       color: #1d4ed8;
-
       margin-bottom: 12px;
     }
 
-    .qr-placeholder {
-      width: 135px;
-      height: 135px;
-
-      border: 1px solid #cbd5e1;
-
-      display: flex;
-
-      align-items: center;
-      justify-content: center;
-
-      color: #64748b;
-
-      font-size: 13px;
-
-      text-align: center;
+    .qr-image {
+      width: 210px;
+      height: 210px;
+      object-fit: contain;
+      border-radius: 8px;
+      border: 1px solid #e2e8f0;
+      background: white;
+      padding: 5px;
     }
 
-    /* SUBMIT */
+    .qr-name {
+      margin-top: 10px;
+      color: #64748b;
+      font-size: 13px;
+    }
 
     .submit {
       width: 100%;
-
       height: 54px;
-
       border: 0;
-
       border-radius: 11px;
-
       background: #1677ee;
-
       color: white;
-
       font-size: 17px;
-
       font-weight: 800;
-
       cursor: pointer;
-
       margin-top: 28px;
     }
 
@@ -331,19 +262,12 @@
       cursor: not-allowed;
     }
 
-    /* MESSAGE */
-
     #msg {
       display: none;
-
       margin-top: 15px;
-
       padding: 13px;
-
       border-radius: 10px;
-
       font-weight: 700;
-
       text-align: center;
     }
 
@@ -359,23 +283,15 @@
 
     .footer-note {
       text-align: center;
-
       color: #64748b;
-
       font-size: 13px;
-
       margin-top: 15px;
     }
 
-    /* MOBILE */
-
     @media (max-width: 760px) {
-
       .topbar {
         min-height: 72px;
-
         padding: 12px 4%;
-
         flex-wrap: wrap;
       }
 
@@ -385,13 +301,11 @@
 
       .nav {
         margin-left: 0;
-
         width: 100%;
       }
 
       .nav a {
         flex: 1;
-
         text-align: center;
       }
 
@@ -411,13 +325,17 @@
         grid-template-columns: 1fr;
       }
 
+      .qr-image {
+        width: 200px;
+        height: 200px;
+      }
+
       form {
         padding: 20px;
       }
 
       .wrap {
         width: 94%;
-
         margin-top: 25px;
       }
     }
@@ -426,65 +344,35 @@
 
 <body>
 
-  <!-- HEADER -->
-
   <header class="topbar">
 
     <div class="brand">
       🏆 <span>SDMPL - 2</span>
-
-      <small>
-        PLAYER REGISTRATION
-      </small>
+      <small>PLAYER REGISTRATION</small>
     </div>
 
     <nav class="nav">
-
-      <a href="/">
-        ← Live Auction
-      </a>
-
-      <a href="/admin.html" class="admin">
-        Admin
-      </a>
-
+      <a href="/">← Live Auction</a>
+      <a href="/admin.html" class="admin">Admin</a>
     </nav>
 
   </header>
 
-
-  <!-- MAIN -->
-
   <main class="wrap">
 
     <div class="heading">
-
-      <h1>
-        Player Registration
-      </h1>
-
-      <p>
-        Register for the SDMPL - 2 Cricket Auction
-      </p>
-
+      <h1>Player Registration</h1>
+      <p>Register for the SDMPL - 2 Cricket Auction</p>
     </div>
-
 
     <div class="card">
 
-      <form
-        id="registrationForm"
-        enctype="multipart/form-data"
-      >
+      <form id="registrationForm" enctype="multipart/form-data">
 
         <!-- PLAYER INFORMATION -->
-
         <div class="grid">
 
-          <!-- NAME -->
-
           <div class="field">
-
             <label>
               Player Name
               <span>*</span>
@@ -496,14 +384,9 @@
               placeholder="Enter full name"
               required
             >
-
           </div>
 
-
-          <!-- PHONE -->
-
           <div class="field">
-
             <label>
               Phone Number
               <span>*</span>
@@ -517,14 +400,9 @@
               pattern="[0-9]{10}"
               required
             >
-
           </div>
 
-
-          <!-- VILLAGE -->
-
           <div class="field">
-
             <label>
               Village
               <span>*</span>
@@ -536,53 +414,26 @@
               placeholder="Enter village name"
               required
             >
-
           </div>
 
-
-          <!-- ROLE -->
-
           <div class="field">
-
             <label>
               Playing Role
               <span>*</span>
             </label>
 
-            <select
-              name="role"
-              required
-            >
-
-              <option value="">
-                Select playing role
-              </option>
-
-              <option value="Batsman">
-                Batsman
-              </option>
-
-              <option value="Bowler">
-                Bowler
-              </option>
-
-              <option value="All-Rounder">
-                All-Rounder
-              </option>
-
-              <option value="Wicket-Keeper">
-                Wicket-Keeper
-              </option>
-
+            <select name="role" required>
+              <option value="">Select playing role</option>
+              <option value="Batsman">Batsman</option>
+              <option value="Bowler">Bowler</option>
+              <option value="All-Rounder">All-Rounder</option>
+              <option value="Wicket-Keeper">Wicket-Keeper</option>
             </select>
-
           </div>
 
         </div>
 
-
         <!-- PLAYER PHOTO -->
-
         <div class="section">
 
           <div class="field">
@@ -602,7 +453,7 @@
               >
 
               <div class="note">
-                JPG, PNG or WEBP • Maximum 5 MB
+                JPG, PNG or WEBP • Maximum 10 MB
               </div>
 
             </div>
@@ -611,81 +462,67 @@
 
         </div>
 
-
         <!-- PAYMENT -->
-
         <div class="section">
 
           <div class="payment">
 
-            <h2>
-              💳 Registration Payment
-            </h2>
+            <h2>💳 Registration Payment</h2>
 
             <p>
               Scan any one of the QR codes below and make the registration payment.
             </p>
 
-
             <div class="qrgrid">
 
-
               <!-- QR 1 -->
-
               <div class="qrbox">
 
-                <strong>
-                  UPI QR 1
-                </strong>
+                <strong>UPI QR 1</strong>
 
-                <div class="qr-placeholder">
+                <img
+                  src="/images/scanner-1.png"
+                  alt="UPI Scanner 1"
+                  class="qr-image"
+                >
 
-                  ADD QR CODE 1
-
+                <div class="qr-name">
+                  Scanner 1
                 </div>
 
               </div>
-
 
               <!-- QR 2 -->
-
               <div class="qrbox">
 
-                <strong>
-                  UPI QR 2
-                </strong>
+                <strong>UPI QR 2</strong>
 
-                <div class="qr-placeholder">
+                <img
+                  src="/images/scanner-2.png"
+                  alt="UPI Scanner 2"
+                  class="qr-image"
+                >
 
-                  ADD QR CODE 2
-
+                <div class="qr-name">
+                  Scanner 2
                 </div>
 
               </div>
-
 
             </div>
 
-
             <div class="note">
-
               After payment, enter the UTR / transaction number below.
-
             </div>
 
           </div>
 
         </div>
 
-
         <!-- UTR + SCREENSHOT -->
-
         <div class="section">
 
           <div class="grid">
-
-
-            <!-- UTR -->
 
             <div class="field">
 
@@ -702,9 +539,6 @@
               >
 
             </div>
-
-
-            <!-- PAYMENT SCREENSHOT -->
 
             <div class="field">
 
@@ -723,7 +557,7 @@
                 >
 
                 <div class="note">
-                  JPG, PNG or WEBP • Maximum 5 MB
+                  JPG, PNG or WEBP • Maximum 10 MB
                 </div>
 
               </div>
@@ -734,30 +568,20 @@
 
         </div>
 
-
         <!-- SUBMIT -->
-
         <button
           class="submit"
           id="submitButton"
           type="submit"
         >
-
           🚀 Submit Registration
-
         </button>
-
-
-        <!-- MESSAGE -->
 
         <div id="msg"></div>
 
-
         <div class="footer-note">
-
           Your registration becomes auction-eligible after
           the submitted UTR is matched by the admin.
-
         </div>
 
       </form>
@@ -765,9 +589,6 @@
     </div>
 
   </main>
-
-
-  <!-- JAVASCRIPT -->
 
   <script>
 
@@ -785,37 +606,25 @@
 
       e.preventDefault();
 
-
       msg.style.display = "none";
-
       msg.className = "";
 
-
       submitButton.disabled = true;
+      submitButton.textContent = "Submitting...";
 
-      submitButton.textContent =
-        "Submitting...";
-
-
-      const formData =
-        new FormData(form);
-
+      const formData = new FormData(form);
 
       try {
 
-        const response =
-          await fetch(
-            "/api/register",
-            {
-              method: "POST",
-              body: formData
-            }
-          );
+        const response = await fetch(
+          "/api/register",
+          {
+            method: "POST",
+            body: formData
+          }
+        );
 
-
-        const data =
-          await response.json();
-
+        const data = await response.json();
 
         if (response.ok) {
 
@@ -823,12 +632,8 @@
             data.message ||
             "Registration submitted successfully.";
 
-          msg.className =
-            "success";
-
-          msg.style.display =
-            "block";
-
+          msg.className = "success";
+          msg.style.display = "block";
 
           form.reset();
 
@@ -839,34 +644,24 @@
             data.message ||
             "Registration failed.";
 
-          msg.className =
-            "error";
-
-          msg.style.display =
-            "block";
+          msg.className = "error";
+          msg.style.display = "block";
 
         }
-
 
       } catch (error) {
 
         console.error(error);
 
-
         msg.textContent =
           "Unable to connect to the server. Please try again.";
 
-        msg.className =
-          "error";
-
-        msg.style.display =
-          "block";
+        msg.className = "error";
+        msg.style.display = "block";
 
       }
 
-
       submitButton.disabled = false;
-
       submitButton.textContent =
         "🚀 Submit Registration";
 
