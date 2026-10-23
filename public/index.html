@@ -12,14 +12,15 @@
 
   <meta
     name="theme-color"
-    content="#071a35"
+    content="#06152e"
   >
 
-  <title>SGPPL-2 | Live Auction</title>
+  <title>SGPPL-2 Live Cricket Auction</title>
 
+  <!-- Cache-busting version -->
   <link
     rel="stylesheet"
-    href="/style.css"
+    href="/style.css?v=10"
   >
 
 </head>
@@ -29,61 +30,49 @@
 
 
   <!-- =====================================================
-       TOP NAVIGATION
+       HEADER
   ====================================================== -->
 
-  <header class="auction-header">
+  <header class="topbar">
 
-    <div class="header-left">
 
-      <div class="logo-mark">
-        🏆
+    <div class="brand">
+
+      <div class="brand-title">
+        🏆 SGPPL - 2
       </div>
 
-      <div class="brand">
-
-        <div class="brand-name">
-          SGPPL <span>2</span>
-        </div>
-
-        <div class="brand-subtitle">
-          CRICKET PLAYER AUCTION
-        </div>
-
+      <div class="brand-subtitle">
+        LIVE CRICKET AUCTION
       </div>
 
     </div>
 
 
-    <div class="auction-live">
+    <div class="live-status">
 
-      <span class="live-pulse"></span>
+      <span class="live-dot"></span>
 
-      <span>LIVE AUCTION</span>
+      LIVE AUCTION
 
     </div>
 
 
-    <nav class="header-actions">
+    <nav class="nav">
 
-      <a
-        href="/register.html"
-        class="header-btn register-btn"
-      >
-        <span>👤</span>
-        Register Player
+      <a href="/register.html">
+        Player Registration
       </a>
-
 
       <a
         href="/admin.html"
-        class="header-btn admin-btn"
+        class="admin-button"
       >
-        <span>⚙</span>
         Admin
       </a>
 
     </nav>
+
 
   </header>
 
@@ -93,339 +82,232 @@
        MAIN
   ====================================================== -->
 
-  <main class="auction-container">
+  <main class="auction-layout">
 
 
-    <!-- =================================================
-         AUCTION STATUS BAR
-    ================================================== -->
+    <!-- ===================================================
+         LEFT SIDE - TEAMS
+    ==================================================== -->
 
-    <section class="auction-status-bar">
+    <aside class="teams-panel">
 
-      <div class="status-left">
 
-        <span class="status-live-dot"></span>
+      <div class="panel-header">
 
-        <strong>
-          LIVE AUCTION
-        </strong>
+        <div>
 
-        <span class="status-divider"></span>
+          <h2>TEAMS</h2>
 
-        <span>
-          8 Teams
+          <p>
+            POINTS & PLAYERS
+          </p>
+
+        </div>
+
+        <span class="team-count">
+          8 TEAMS
         </span>
 
       </div>
 
 
-      <div class="status-right">
+      <div
+        id="teams"
+        class="team-list"
+      >
 
-        <span>
-          Base Price
-        </span>
-
-        <strong>
-          ₹50
-        </strong>
+        <!-- JavaScript loads teams here -->
 
       </div>
 
-    </section>
+
+    </aside>
 
 
 
-    <!-- =================================================
-         MAIN AUCTION GRID
-    ================================================== -->
+    <!-- ===================================================
+         CENTER
+    ==================================================== -->
 
-    <section class="auction-grid">
+    <section class="auction-center">
 
 
-      <!-- =================================================
-           LEFT - TEAMS
-      ================================================== -->
+      <!-- CURRENT PLAYER -->
 
-      <aside class="teams-card">
+      <div
+        id="playerCard"
+        class="player-card empty"
+      >
 
-        <div class="section-header">
+        <div class="empty-content">
+
+          <div class="auction-icon">
+            🏏
+          </div>
+
+          <h1>
+            AUCTION WILL START SOON
+          </h1>
+
+          <p>
+            Waiting for the administrator to start the auction
+          </p>
+
+        </div>
+
+      </div>
+
+
+
+      <!-- CURRENT BID -->
+
+      <div class="bid-section">
+
+
+        <div class="bid-box">
+
+          <div class="bid-label">
+            CURRENT BID
+          </div>
+
+          <div class="bid-value">
+            ₹<span id="currentBid">0</span>
+          </div>
+
+        </div>
+
+
+        <div class="bid-box">
+
+          <div class="bid-label">
+            HIGHEST BIDDER
+          </div>
+
+          <div
+            id="highestTeam"
+            class="highest-team"
+          >
+            —
+          </div>
+
+        </div>
+
+
+      </div>
+
+
+
+      <!-- PLAYER LIST -->
+
+      <section class="player-list-panel">
+
+
+        <div class="panel-header">
 
           <div>
 
             <h2>
-              Teams
+              PLAYER AUCTION LIST
             </h2>
 
             <p>
-              Remaining budget
+              LIVE PLAYER STATUS
             </p>
 
           </div>
 
-          <span class="team-count">
-            8
+          <span class="live-badge">
+            LIVE
           </span>
 
         </div>
 
 
-        <div
-          id="teams"
-          class="teams-list"
-        >
-          <!-- Loaded by app.js -->
-        </div>
-
-      </aside>
+        <div class="table-container">
 
 
+          <table>
 
-      <!-- =================================================
-           CENTER
-      ================================================== -->
+            <thead>
 
-      <section class="auction-main">
+              <tr>
 
+                <th>PHOTO</th>
 
-        <!-- CURRENT PLAYER -->
+                <th>PLAYER</th>
 
-        <div
-          id="playerCard"
-          class="current-player-card empty"
-        >
+                <th>ROLE</th>
 
-          <div class="empty-auction">
+                <th>VILLAGE</th>
 
-            <div class="empty-auction-icon">
-              🏏
-            </div>
+                <th>STATUS</th>
 
-            <h1>
-              Auction is ready
-            </h1>
+                <th>RESULT</th>
 
-            <p>
-              Waiting for the administrator to start the auction
-            </p>
+              </tr>
 
-            <div class="waiting-badge">
-              WAITING TO START
-            </div>
-
-          </div>
-
-        </div>
+            </thead>
 
 
+            <tbody id="players">
 
-        <!-- BID INFORMATION -->
-
-        <div class="bid-dashboard">
-
-
-          <div class="bid-card current-bid-card">
-
-            <div class="bid-card-label">
-
-              <span class="bid-icon">
-                💰
-              </span>
-
-              CURRENT BID
-
-            </div>
+            </tbody>
 
 
-            <div class="current-bid-value">
-
-              ₹<span id="currentBid">0</span>
-
-            </div>
-
-
-            <div class="bid-helper">
-              Latest highest offer
-            </div>
-
-          </div>
-
-
-
-          <div class="bid-card highest-bid-card">
-
-            <div class="bid-card-label">
-
-              <span class="bid-icon">
-                🏆
-              </span>
-
-              HIGHEST BIDDER
-
-            </div>
-
-
-            <div
-              id="highestTeam"
-              class="highest-bidder"
-            >
-              —
-            </div>
-
-
-            <div class="bid-helper">
-              Leading team
-            </div>
-
-          </div>
+          </table>
 
 
         </div>
-
-
-
-        <!-- PLAYER AUCTION LIST -->
-
-        <section class="players-card">
-
-          <div class="section-header players-header">
-
-            <div>
-
-              <h2>
-                Player Auction
-              </h2>
-
-              <p>
-                Player status and results
-              </p>
-
-            </div>
-
-
-            <div class="live-small">
-
-              <span></span>
-
-              LIVE
-
-            </div>
-
-          </div>
-
-
-          <div class="players-table-container">
-
-            <table class="players-table">
-
-              <thead>
-
-                <tr>
-
-                  <th>
-                    #
-                  </th>
-
-                  <th>
-                    PLAYER
-                  </th>
-
-                  <th>
-                    ROLE
-                  </th>
-
-                  <th>
-                    VILLAGE
-                  </th>
-
-                  <th>
-                    STATUS
-                  </th>
-
-                  <th>
-                    RESULT
-                  </th>
-
-                </tr>
-
-              </thead>
-
-
-              <tbody id="players">
-                <!-- Loaded by app.js -->
-              </tbody>
-
-            </table>
-
-          </div>
-
-        </section>
 
 
       </section>
 
 
-
-      <!-- =================================================
-           RIGHT - BID HISTORY
-      ================================================== -->
-
-      <aside class="history-card">
-
-
-        <div class="section-header">
-
-          <div>
-
-            <h2>
-              Bid History
-            </h2>
-
-            <p>
-              Latest bids
-            </p>
-
-          </div>
-
-
-          <div class="live-small">
-
-            <span></span>
-
-            LIVE
-
-          </div>
-
-        </div>
-
-
-        <div
-          id="history"
-          class="history-list"
-        >
-
-          <div class="empty-history">
-
-            <div class="history-icon">
-              📊
-            </div>
-
-            <strong>
-              No bids yet
-            </strong>
-
-            <span>
-              Bidding activity will appear here
-            </span>
-
-          </div>
-
-        </div>
-
-
-      </aside>
-
-
     </section>
+
+
+
+    <!-- ===================================================
+         RIGHT SIDE - BID HISTORY
+    ==================================================== -->
+
+    <aside class="history-panel">
+
+
+      <div class="panel-header">
+
+        <div>
+
+          <h2>
+            BID HISTORY
+          </h2>
+
+          <p>
+            LIVE BIDS
+          </p>
+
+        </div>
+
+        <span class="live-badge">
+          LIVE
+        </span>
+
+      </div>
+
+
+      <div
+        id="history"
+        class="history-list"
+      >
+
+        <div class="no-history">
+          No bids yet
+        </div>
+
+      </div>
+
+
+    </aside>
 
 
   </main>
@@ -440,10 +322,10 @@
 
 
   <!-- =====================================================
-       APPLICATION JS
+       APPLICATION JAVASCRIPT
   ====================================================== -->
 
-  <script src="/app.js"></script>
+  <script src="/app.js?v=10"></script>
 
 
 </body>
