@@ -1,228 +1,149 @@
 /* =========================================================
-   SGPPL-2
-   LIVE CRICKET AUCTION
-   PROFESSIONAL UI / UX
-   VERSION 2.0
-========================================================= */
+   SGPPL-2 LIVE CRICKET AUCTION
+   COMPLETE CLEAN CSS
+   ========================================================= */
 
 
 /* =========================================================
-   1. RESET
-========================================================= */
+   RESET
+   ========================================================= */
 
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
+
 
 html {
   width: 100%;
   min-height: 100%;
-  scroll-behavior: smooth;
 }
+
 
 body {
   width: 100%;
   min-height: 100vh;
 
   font-family:
-    Inter,
     Arial,
     Helvetica,
     sans-serif;
 
-  color: #172033;
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(20, 100, 220, 0.25),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at top right,
+      rgba(0, 150, 255, 0.15),
+      transparent 30%
+    ),
+    #06152e;
 
-  background: #071a35;
+  color: white;
 
   overflow-x: hidden;
 }
 
-button,
-input,
-select,
-textarea,
-a {
-  font-family: inherit;
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
 }
 
-a {
-  text-decoration: none;
+
+::-webkit-scrollbar-track {
+  background: #071a34;
 }
 
-button {
-  cursor: pointer;
+
+::-webkit-scrollbar-thumb {
+  background: #31557d;
+  border-radius: 20px;
 }
+
 
 
 /* =========================================================
-   2. MAIN PAGE BACKGROUND
-========================================================= */
+   HEADER
+   ========================================================= */
 
-.auction-page {
-
-  min-height: 100vh;
-
-  background:
-    radial-gradient(
-      circle at 10% 0%,
-      rgba(37, 99, 235, 0.20),
-      transparent 30%
-    ),
-
-    radial-gradient(
-      circle at 90% 5%,
-      rgba(14, 165, 233, 0.12),
-      transparent 27%
-    ),
-
-    linear-gradient(
-      180deg,
-      #06172f 0%,
-      #071a35 45%,
-      #081c39 100%
-    );
-}
-
-
-/* =========================================================
-   3. HEADER
-========================================================= */
-
-.auction-header {
+.topbar {
 
   width: 100%;
 
-  min-height: 76px;
+  min-height: 78px;
 
-  padding:
-    12px 26px;
+  padding: 12px 28px;
 
   display: flex;
 
   align-items: center;
 
-  gap: 22px;
+  gap: 25px;
 
-  background:
-    rgba(4, 17, 38, 0.96);
+  background: #041328;
 
   border-bottom:
     1px solid
-    rgba(255,255,255,0.08);
+    rgba(255,255,255,0.12);
 
   box-shadow:
     0 5px 25px
-    rgba(0,0,0,0.18);
+    rgba(0,0,0,0.3);
 
   position: sticky;
 
   top: 0;
 
-  z-index: 1000;
-
-  backdrop-filter:
-    blur(16px);
+  z-index: 9999;
 }
 
 
-/* =========================================================
-   HEADER LEFT
-========================================================= */
-
-.header-left {
-
-  min-width: 0;
-
-  display: flex;
-
-  align-items: center;
-
-  gap: 11px;
-}
-
-
-.logo-mark {
-
-  width: 45px;
-
-  height: 45px;
-
-  flex-shrink: 0;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  border-radius: 12px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #ffca28,
-      #f59e0b
-    );
-
-  box-shadow:
-    0 8px 22px
-    rgba(245,158,11,0.22);
-
-  font-size: 23px;
-}
-
+/* BRAND */
 
 .brand {
-
-  min-width: 0;
+  flex-shrink: 0;
 }
 
 
-.brand-name {
+.brand-title {
 
-  color: #ffffff;
-
-  font-size: 23px;
-
-  line-height: 1;
+  font-size: 27px;
 
   font-weight: 900;
 
-  letter-spacing: .4px;
-}
+  color: #ffbd18;
 
-
-.brand-name span {
-
-  color: #ffbf1f;
+  line-height: 1;
 }
 
 
 .brand-subtitle {
 
-  margin-top: 5px;
+  margin-top: 6px;
 
-  color: #7891b0;
-
-  font-size: 8px;
-
-  line-height: 1;
-
-  font-weight: 800;
+  font-size: 9px;
 
   letter-spacing: 2px;
 
-  white-space: nowrap;
+  font-weight: 800;
+
+  color: #9db5d4;
 }
 
 
-/* =========================================================
-   LIVE INDICATOR
-========================================================= */
 
-.auction-live {
+/* LIVE */
+
+.live-status {
 
   display: flex;
 
@@ -230,42 +151,37 @@ button {
 
   gap: 8px;
 
-  margin-left: 15px;
+  color: #ff4141;
 
-  color: #ff5555;
-
-  font-size: 11px;
+  font-size: 13px;
 
   font-weight: 900;
-
-  letter-spacing: .8px;
 
   white-space: nowrap;
 }
 
 
-.live-pulse {
+.live-dot {
 
   width: 9px;
 
   height: 9px;
 
-  flex-shrink: 0;
+  display: block;
 
   border-radius: 50%;
 
-  background: #ff3b3b;
+  background: #ff2929;
 
   box-shadow:
-    0 0 0 4px rgba(255,59,59,.08),
-    0 0 15px rgba(255,59,59,.85);
+    0 0 12px
+    rgba(255,41,41,0.9);
 
-  animation:
-    livePulse 1.4s infinite;
+  animation: pulse 1.2s infinite;
 }
 
 
-@keyframes livePulse {
+@keyframes pulse {
 
   0% {
     opacity: 1;
@@ -273,8 +189,8 @@ button {
   }
 
   50% {
-    opacity: .45;
-    transform: scale(.82);
+    opacity: .4;
+    transform: scale(.7);
   }
 
   100% {
@@ -285,297 +201,111 @@ button {
 }
 
 
-/* =========================================================
-   HEADER BUTTONS
-========================================================= */
 
-.header-actions {
+/* NAV */
+
+.nav {
 
   margin-left: auto;
 
   display: flex;
 
-  align-items: center;
-
-  gap: 8px;
+  gap: 10px;
 }
 
 
-.header-btn {
+.nav a {
 
-  min-height: 39px;
+  min-height: 40px;
 
-  padding:
-    0 15px;
+  padding: 0 16px;
 
-  display: inline-flex;
+  display: flex;
 
   align-items: center;
 
   justify-content: center;
 
-  gap: 7px;
-
-  border-radius: 8px;
-
-  font-size: 11px;
-
-  font-weight: 800;
-
-  transition:
-    .18s ease;
-}
-
-
-.register-btn {
-
-  color: #dbeafe;
-
-  background:
-    rgba(255,255,255,.045);
+  border-radius: 9px;
 
   border:
     1px solid
-    rgba(255,255,255,.13);
-}
-
-
-.register-btn:hover {
+    rgba(255,255,255,0.2);
 
   background:
-    rgba(255,255,255,.10);
-
-  border-color:
-    rgba(255,255,255,.25);
-
-  transform:
-    translateY(-1px);
-}
-
-
-.admin-btn {
+    rgba(255,255,255,0.06);
 
   color: white;
 
-  background:
-    linear-gradient(
-      135deg,
-      #1976e8,
-      #1259b5
-    );
+  text-decoration: none;
 
-  border:
-    1px solid
-    #1976e8;
+  font-size: 12px;
 
-  box-shadow:
-    0 6px 18px
-    rgba(25,118,232,.22);
-}
-
-
-.admin-btn:hover {
-
-  transform:
-    translateY(-1px);
-
-  box-shadow:
-    0 9px 23px
-    rgba(25,118,232,.32);
-}
-
-
-/* =========================================================
-   4. MAIN CONTAINER
-========================================================= */
-
-.auction-container {
-
-  width:
-    calc(100% - 36px);
-
-  max-width:
-    1850px;
-
-  margin:
-    18px auto
-    45px;
-}
-
-
-/* =========================================================
-   5. STATUS BAR
-========================================================= */
-
-.auction-status-bar {
-
-  min-height: 46px;
-
-  margin-bottom: 14px;
-
-  padding:
-    0 15px;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: space-between;
-
-  gap: 15px;
-
-  border:
-    1px solid
-    rgba(255,255,255,.08);
-
-  border-radius: 9px;
-
-  background:
-    rgba(255,255,255,.045);
-
-  color: #91a8c4;
-
-  box-shadow:
-    inset 0 1px 0
-    rgba(255,255,255,.03);
-}
-
-
-.status-left,
-.status-right {
-
-  display: flex;
-
-  align-items: center;
-
-  gap: 9px;
-}
-
-
-.status-left {
-
-  min-width: 0;
-}
-
-
-.status-left strong {
-
-  color: #ffffff;
-
-  font-size: 9px;
-
-  font-weight: 900;
-
-  letter-spacing: .7px;
-}
-
-
-.status-left span {
-
-  font-size: 9px;
+  font-weight: 800;
 
   white-space: nowrap;
+
+  transition: .2s;
 }
 
 
-.status-live-dot {
-
-  width: 7px;
-
-  height: 7px;
-
-  flex-shrink: 0;
-
-  border-radius: 50%;
-
-  background: #22c55e;
-
-  box-shadow:
-    0 0 10px
-    rgba(34,197,94,.75);
-}
-
-
-.status-divider {
-
-  width: 1px;
-
-  height: 13px;
-
-  flex-shrink: 0;
+.nav a:hover {
 
   background:
-    rgba(255,255,255,.13);
+    rgba(255,255,255,0.15);
 }
 
 
-.status-right span {
+.nav .admin-button {
 
-  font-size: 9px;
+  background: #1677ee;
+
+  border-color: #1677ee;
 }
 
 
-.status-right strong {
+.nav .admin-button:hover {
 
-  color: #ffca28;
-
-  font-size: 13px;
-
-  font-weight: 900;
+  background: #075fc9;
 }
+
 
 
 /* =========================================================
-   6. MAIN THREE COLUMN GRID
-========================================================= */
+   MAIN GRID
+   ========================================================= */
 
-.auction-grid {
+.auction-layout {
 
-  width: 100%;
+  width: 96%;
+
+  max-width: 1800px;
+
+  margin: 20px auto 40px;
 
   display: grid;
 
   grid-template-columns:
-    265px
+    280px
     minmax(500px, 1fr)
-    265px;
+    280px;
 
-  gap: 14px;
+  gap: 18px;
 
   align-items: start;
 }
 
 
-/* =========================================================
-   7. COMMON WHITE CARDS
-========================================================= */
-
-.teams-card,
-.players-card,
-.history-card,
-.bid-card {
-
-  background:
-    #ffffff;
-
-  border-radius: 13px;
-
-  box-shadow:
-    0 12px 35px
-    rgba(0,0,0,.20);
-}
-
 
 /* =========================================================
-   8. SECTION HEADER
-========================================================= */
+   COMMON PANEL HEADER
+   ========================================================= */
 
-.section-header {
+.panel-header {
 
-  min-height: 61px;
+  min-height: 62px;
 
-  padding:
-    12px 15px;
+  padding: 12px 15px;
 
   display: flex;
 
@@ -585,133 +315,108 @@ button {
 
   gap: 10px;
 
-  border-bottom:
-    1px solid
-    #e8edf3;
+  background:
+    linear-gradient(
+      135deg,
+      #0a2850,
+      #104c86
+    );
+
+  color: white;
 }
 
 
-.section-header h2 {
+.panel-header h2 {
 
-  color: #14233a;
-
-  font-size: 14px;
-
-  line-height: 1.1;
+  font-size: 15px;
 
   font-weight: 900;
 }
 
 
-.section-header p {
+.panel-header p {
 
   margin-top: 4px;
 
-  color: #8b98a9;
+  font-size: 9px;
+
+  letter-spacing: 1px;
+
+  color: #a8c1df;
+
+  font-weight: 700;
+}
+
+
+.team-count,
+.live-badge {
+
+  padding: 6px 9px;
+
+  border-radius: 7px;
+
+  background:
+    rgba(255,255,255,0.12);
+
+  color: #ffcf4a;
+
+  border:
+    1px solid
+    rgba(255,255,255,0.15);
 
   font-size: 9px;
 
-  line-height: 1;
-}
-
-
-.team-count {
-
-  width: 29px;
-
-  height: 29px;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  border-radius: 8px;
-
-  color: #1263c9;
-
-  background:
-    #edf5ff;
-
-  font-size: 10px;
-
   font-weight: 900;
+
+  white-space: nowrap;
 }
+
+
+.live-badge {
+
+  color: white;
+
+  background: #dc3030;
+
+  border-color: #dc3030;
+}
+
 
 
 /* =========================================================
-   9. SMALL LIVE BADGE
-========================================================= */
+   LEFT - TEAMS
+   ========================================================= */
 
-.live-small {
+.teams-panel {
 
-  display: flex;
+  background: white;
 
-  align-items: center;
+  color: #16253c;
 
-  gap: 5px;
+  border-radius: 15px;
 
-  color: #e32d2d;
-
-  font-size: 8px;
-
-  font-weight: 900;
-
-  letter-spacing: .6px;
-}
-
-
-.live-small span {
-
-  width: 6px;
-
-  height: 6px;
-
-  border-radius: 50%;
-
-  background: #ef4444;
+  overflow: hidden;
 
   box-shadow:
-    0 0 8px
-    rgba(239,68,68,.65);
-
-  animation:
-    livePulse 1.5s infinite;
-}
-
-
-/* =========================================================
-   10. LEFT TEAM CARD
-========================================================= */
-
-.teams-card {
+    0 15px 40px
+    rgba(0,0,0,.3);
 
   position: sticky;
 
-  top: 92px;
-
-  max-height:
-    calc(100vh - 110px);
-
-  overflow: hidden;
+  top: 98px;
 }
 
 
-.teams-list {
+.team-list {
 
-  padding: 9px;
+  padding: 10px;
 
   max-height:
-    calc(100vh - 171px);
+    calc(100vh - 180px);
 
   overflow-y: auto;
 }
 
-
-/* =========================================================
-   TEAM ROW
-========================================================= */
 
 .team-row {
 
@@ -719,67 +424,43 @@ button {
 
   min-height: 65px;
 
-  margin-bottom: 7px;
+  margin-bottom: 8px;
 
-  padding:
-    10px 10px;
+  padding: 11px;
 
   display: grid;
 
   grid-template-columns:
-    minmax(0,1fr)
+    1fr
     auto;
 
-  gap: 4px 8px;
+  gap: 4px 10px;
 
   align-items: center;
 
+  background: #f7f9fc;
+
   border:
     1px solid
-    #e3e9f0;
+    #dce4ee;
 
-  border-radius: 9px;
+  border-radius: 10px;
 
-  background:
-    #f8fafc;
-
-  transition:
-    .18s ease;
-}
-
-
-.team-row:last-child {
-
-  margin-bottom: 0;
+  color: #25354d;
 }
 
 
 .team-row:hover {
 
-  background:
-    #f3f8ff;
+  background: #edf5ff;
 
-  border-color:
-    #c8ddf6;
-
-  transform:
-    translateX(2px);
+  border-color: #b8d3f1;
 }
 
 
 .team-row > div {
 
-  min-width: 0;
-
-  overflow: hidden;
-
-  text-overflow: ellipsis;
-
-  white-space: nowrap;
-
-  color: #334155;
-
-  font-size: 11px;
+  font-size: 13px;
 
   font-weight: 700;
 }
@@ -787,29 +468,19 @@ button {
 
 .team-row > div b {
 
-  display: inline-flex;
+  color: #075dc6;
 
-  min-width: 31px;
-
-  margin-right: 4px;
-
-  color: #1263c9;
-
-  font-size: 11px;
-
-  font-weight: 900;
+  margin-right: 5px;
 }
 
 
 .team-row > strong {
 
-  color: #087a45;
+  color: #087542;
 
-  font-size: 12px;
+  font-size: 15px;
 
   font-weight: 900;
-
-  white-space: nowrap;
 }
 
 
@@ -818,17 +489,20 @@ button {
   grid-column:
     1 / -1;
 
-  color: #94a3b8;
+  color: #64748b;
 
-  font-size: 9px;
+  font-size: 10px;
 }
 
 
-/* =========================================================
-   11. CENTER AUCTION AREA
-========================================================= */
 
-.auction-main {
+/* =========================================================
+   CENTER
+   ========================================================= */
+
+.auction-center {
+
+  width: 100%;
 
   min-width: 0;
 
@@ -836,19 +510,22 @@ button {
 
   flex-direction: column;
 
-  gap: 13px;
+  gap: 15px;
 }
 
 
-/* =========================================================
-   12. CURRENT PLAYER CARD
-========================================================= */
 
-.current-player-card {
+/* =========================================================
+   PLAYER CARD
+   ========================================================= */
+
+.player-card {
 
   width: 100%;
 
-  height: 520px;
+  height: 540px;
+
+  min-height: 540px;
 
   position: relative;
 
@@ -859,21 +536,17 @@ button {
   background:
     linear-gradient(
       145deg,
-      #09254c,
-      #0c4c8d
+      #071e42,
+      #0b4c91
     );
 
   box-shadow:
-    0 20px 50px
-    rgba(0,0,0,.30);
+    0 18px 45px
+    rgba(0,0,0,.4);
 }
 
 
-/* =========================================================
-   EMPTY AUCTION
-========================================================= */
-
-.current-player-card.empty {
+.player-card.empty {
 
   display: flex;
 
@@ -882,35 +555,10 @@ button {
   justify-content: center;
 
   text-align: center;
-
-  background:
-
-    radial-gradient(
-      circle at 50% 42%,
-      rgba(37,99,235,.25),
-      transparent 36%
-    ),
-
-    radial-gradient(
-      circle at 10% 90%,
-      rgba(14,165,233,.12),
-      transparent 28%
-    ),
-
-    linear-gradient(
-      145deg,
-      #09234a,
-      #073b76
-    );
 }
 
 
-.empty-auction {
-
-  max-width: 520px;
-
-  padding:
-    25px;
+.empty-content {
 
   display: flex;
 
@@ -918,17 +566,17 @@ button {
 
   align-items: center;
 
-  justify-content: center;
+  padding: 25px;
 }
 
 
-.empty-auction-icon {
+.auction-icon {
 
-  width: 82px;
+  width: 90px;
 
-  height: 82px;
+  height: 90px;
 
-  margin-bottom: 18px;
+  margin-bottom: 20px;
 
   display: flex;
 
@@ -938,96 +586,45 @@ button {
 
   border-radius: 50%;
 
-  color: #ffffff;
-
   background:
     rgba(255,255,255,.08);
 
-  border:
-    1px solid
-    rgba(255,255,255,.12);
-
-  box-shadow:
-    0 12px 35px
-    rgba(0,0,0,.20);
-
-  font-size: 39px;
+  font-size: 45px;
 }
 
 
-.empty-auction h1 {
+.empty-content h1 {
 
-  color: #ffffff;
-
-  font-size:
-    clamp(21px,2.5vw,29px);
-
-  line-height: 1.15;
+  font-size: 25px;
 
   font-weight: 900;
 
-  letter-spacing: .2px;
+  color: white;
 }
 
 
-.empty-auction p {
+.empty-content p {
 
   margin-top: 9px;
 
-  color: #aac3e0;
+  font-size: 12px;
 
-  font-size: 11px;
-
-  line-height: 1.5;
+  color: #a9c5e7;
 }
 
 
-.waiting-badge {
 
-  margin-top: 17px;
+/* PLAYER PHOTO */
 
-  padding:
-    7px 13px;
-
-  border:
-    1px solid
-    rgba(255,255,255,.12);
-
-  border-radius: 50px;
-
-  color: #ffcf4a;
-
-  background:
-    rgba(255,255,255,.07);
-
-  font-size: 8px;
-
-  font-weight: 900;
-
-  letter-spacing: 1px;
-}
-
-
-/* =========================================================
-   13. PLAYER IMAGE AREA
-========================================================= */
-
-.current-player-card .photo-wrap {
+.photo-wrap {
 
   width: 100%;
 
   height: 100%;
-
-  background:
-    linear-gradient(
-      145deg,
-      #103969,
-      #0a61b8
-    );
 }
 
 
-.current-player-card .photo-wrap img {
+.photo-wrap img {
 
   width: 100%;
 
@@ -1039,11 +636,10 @@ button {
 }
 
 
-/* =========================================================
-   14. PLAYER INFO OVERLAY
-========================================================= */
 
-.current-player-card .player-info {
+/* PLAYER INFORMATION */
+
+.player-info {
 
   position: absolute;
 
@@ -1054,71 +650,45 @@ button {
   bottom: 0;
 
   padding:
-    105px 25px
-    23px;
-
-  color: #ffffff;
+    100px 25px 22px;
 
   background:
     linear-gradient(
       to top,
-      rgba(0,0,0,.97) 0%,
-      rgba(0,0,0,.82) 42%,
-      rgba(0,0,0,0) 100%
+      rgba(0,0,0,.95),
+      rgba(0,0,0,.65),
+      transparent
     );
 }
 
 
-/* =========================================================
-   AUCTION TAG
-========================================================= */
-
 .auction-tag {
 
-  display: inline-flex;
+  display: inline-block;
 
-  align-items: center;
+  margin-bottom: 7px;
 
-  padding:
-    6px 10px;
-
-  margin-bottom: 8px;
+  padding: 6px 10px;
 
   border-radius: 50px;
 
-  color: #ffffff;
+  background: #1677ee;
 
-  background:
-    #e32d2d;
+  color: white;
 
-  box-shadow:
-    0 4px 12px
-    rgba(227,45,45,.25);
-
-  font-size: 8px;
+  font-size: 10px;
 
   font-weight: 900;
-
-  letter-spacing: .4px;
 }
 
 
-/* =========================================================
-   PLAYER NAME
-========================================================= */
-
 .player-info h1 {
 
-  color: #ffffff;
+  font-size: 38px;
 
-  font-size:
-    clamp(25px,3vw,38px);
-
-  line-height: 1.08;
+  line-height: 1.1;
 
   font-weight: 900;
-
-  letter-spacing: -.3px;
 }
 
 
@@ -1128,7 +698,7 @@ button {
 
   color: #ffcf4a;
 
-  font-size: 13px;
+  font-size: 15px;
 
   font-weight: 900;
 }
@@ -1138,93 +708,18 @@ button {
 
   margin-top: 5px;
 
-  color: #d5e4f5;
+  color: #d5e6fb;
 
-  font-size: 11px;
+  font-size: 13px;
 }
+
 
 
 /* =========================================================
-   PLAYER PRICE INFORMATION
-========================================================= */
+   BID BOXES
+   ========================================================= */
 
-.price-grid {
-
-  width: 100%;
-
-  margin-top: 14px;
-
-  display: grid;
-
-  grid-template-columns:
-    repeat(3,1fr);
-
-  gap: 8px;
-}
-
-
-.price-grid > div {
-
-  min-width: 0;
-
-  padding:
-    10px;
-
-  border:
-    1px solid
-    rgba(255,255,255,.12);
-
-  border-radius: 8px;
-
-  background:
-    rgba(255,255,255,.09);
-
-  backdrop-filter:
-    blur(5px);
-}
-
-
-.price-grid small {
-
-  display: block;
-
-  color: #9fb6d1;
-
-  font-size: 7px;
-
-  font-weight: 900;
-
-  letter-spacing: .6px;
-}
-
-
-.price-grid b {
-
-  display: block;
-
-  margin-top: 4px;
-
-  overflow: hidden;
-
-  color: #ffffff;
-
-  font-size: 16px;
-
-  font-weight: 900;
-
-  text-overflow: ellipsis;
-
-  white-space: nowrap;
-}
-
-
-/* =========================================================
-   15. BID DASHBOARD
-========================================================= */
-
-.bid-dashboard {
-
-  width: 100%;
+.bid-section {
 
   display: grid;
 
@@ -1232,385 +727,260 @@ button {
     1fr
     1fr;
 
-  gap: 12px;
+  gap: 14px;
 }
 
 
-.bid-card {
+.bid-box {
 
-  min-height: 101px;
+  min-height: 90px;
 
-  padding:
-    15px 17px;
-
-  position: relative;
-
-  overflow: hidden;
-}
-
-
-.bid-card::after {
-
-  content: "";
-
-  position: absolute;
-
-  width: 120px;
-
-  height: 120px;
-
-  right: -45px;
-
-  bottom: -55px;
-
-  border-radius: 50%;
-
-  background:
-    rgba(37,99,235,.05);
-
-  pointer-events: none;
-}
-
-
-.current-bid-card {
-
-  border-top:
-    3px solid
-    #1677ee;
-}
-
-
-.highest-bid-card {
-
-  border-top:
-    3px solid
-    #f59e0b;
-}
-
-
-.bid-card-label {
+  padding: 15px 18px;
 
   display: flex;
 
-  align-items: center;
+  flex-direction: column;
 
-  gap: 6px;
+  justify-content: center;
+
+  background: white;
+
+  border-radius: 13px;
+
+  color: #18263d;
+
+  box-shadow:
+    0 12px 30px
+    rgba(0,0,0,.22);
+}
+
+
+.bid-label {
 
   color: #64748b;
 
-  font-size: 9px;
+  font-size: 10px;
+
+  letter-spacing: 1px;
 
   font-weight: 900;
-
-  letter-spacing: .8px;
 }
 
 
-.bid-icon {
+.bid-value {
 
-  font-size: 13px;
-}
+  margin-top: 4px;
 
-
-.current-bid-value {
-
-  margin-top: 5px;
-
-  color: #1263c9;
+  color: #0868d5;
 
   font-size: 28px;
 
-  line-height: 1;
-
   font-weight: 900;
 }
 
 
-.highest-bidder {
+.highest-team {
 
-  margin-top: 7px;
+  margin-top: 4px;
 
-  color: #b86d00;
+  color: #0868d5;
 
-  font-size: 26px;
-
-  line-height: 1;
+  font-size: 27px;
 
   font-weight: 900;
-
-  overflow: hidden;
-
-  text-overflow: ellipsis;
-
-  white-space: nowrap;
 }
 
-
-.bid-helper {
-
-  margin-top: 6px;
-
-  color: #94a3b8;
-
-  font-size: 8px;
-}
 
 
 /* =========================================================
-   16. PLAYER AUCTION CARD
-========================================================= */
+   PLAYER TABLE
+   ========================================================= */
 
-.players-card {
+.player-list-panel {
 
   width: 100%;
 
   overflow: hidden;
+
+  background: white;
+
+  color: #17253c;
+
+  border-radius: 15px;
+
+  box-shadow:
+    0 15px 40px
+    rgba(0,0,0,.25);
 }
 
 
-.players-header {
-
-  min-height: 62px;
-}
-
-
-/* =========================================================
-   TABLE CONTAINER
-========================================================= */
-
-.players-table-container {
+.table-container {
 
   width: 100%;
 
   overflow-x: auto;
-
-  scrollbar-width: thin;
-
-  scrollbar-color:
-    #cbd5e1
-    transparent;
 }
 
 
-.players-table {
+table {
 
   width: 100%;
 
-  min-width: 690px;
+  min-width: 650px;
 
   border-collapse: collapse;
-
-  table-layout: auto;
 }
 
 
-/* =========================================================
-   TABLE HEAD
-========================================================= */
+thead th {
 
-.players-table th {
+  padding: 12px;
 
-  height: 38px;
+  background: #f1f5f9;
 
-  padding:
-    0 10px;
+  color: #475569;
 
   text-align: left;
 
-  white-space: nowrap;
+  font-size: 10px;
 
-  color: #64748b;
+  font-weight: 900;
+}
 
-  background:
-    #f8fafc;
 
-  border-bottom:
+tbody td {
+
+  padding: 10px 12px;
+
+  border-top:
     1px solid
     #e5e7eb;
 
-  font-size: 8px;
-
-  font-weight: 900;
-
-  letter-spacing: .5px;
-}
-
-
-/* =========================================================
-   TABLE BODY
-========================================================= */
-
-.players-table td {
-
-  padding:
-    8px 10px;
-
   color: #334155;
 
-  background: #ffffff;
-
-  border-bottom:
-    1px solid
-    #edf1f5;
-
-  font-size: 10px;
-
-  vertical-align: middle;
+  font-size: 12px;
 }
 
 
-.players-table tbody tr {
+tbody tr:hover {
 
-  transition:
-    background .15s ease;
+  background: #f8fbff;
 }
 
-
-.players-table tbody tr:hover td {
-
-  background:
-    #f7fbff;
-}
-
-
-.players-table td:first-child {
-
-  width: 35px;
-
-  color: #94a3b8;
-}
-
-
-.players-table td strong {
-
-  color: #1e293b;
-}
-
-
-/* =========================================================
-   PLAYER THUMB
-========================================================= */
 
 .thumb {
 
-  width: 36px;
+  width: 42px;
 
-  height: 36px;
+  height: 42px;
 
   display: block;
 
   object-fit: cover;
 
-  border-radius: 7px;
+  border-radius: 8px;
 
-  background:
-    #eaf2fc;
+  background: #e2e8f0;
 }
 
 
+
 /* =========================================================
-   17. STATUS BADGES
-========================================================= */
+   STATUS
+   ========================================================= */
 
 .status {
 
   display: inline-flex;
 
-  align-items: center;
-
-  justify-content: center;
-
-  min-width: 54px;
-
-  padding:
-    4px 8px;
+  padding: 5px 9px;
 
   border-radius: 50px;
 
-  font-size: 7px;
+  font-size: 9px;
 
   font-weight: 900;
-
-  letter-spacing: .2px;
 }
 
 
 .status.confirmed {
 
-  color: #166534;
+  background: #dcfce7;
 
-  background:
-    #dcfce7;
+  color: #166534;
 }
 
 
 .status.sold {
 
-  color: #1d4ed8;
+  background: #dbeafe;
 
-  background:
-    #dbeafe;
+  color: #1d4ed8;
 }
 
 
 .status.unsold {
 
-  color: #991b1b;
+  background: #fee2e2;
 
-  background:
-    #fee2e2;
+  color: #991b1b;
 }
 
 
 .status.pending {
 
-  color: #92400e;
+  background: #fef3c7;
 
-  background:
-    #fef3c7;
+  color: #92400e;
 }
 
 
-/* =========================================================
-   18. RIGHT BID HISTORY
-========================================================= */
 
-.history-card {
+/* =========================================================
+   RIGHT - BID HISTORY
+   ========================================================= */
+
+.history-panel {
+
+  background: white;
+
+  color: #17253c;
+
+  border-radius: 15px;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 15px 40px
+    rgba(0,0,0,.3);
 
   position: sticky;
 
-  top: 92px;
+  top: 98px;
 
   max-height:
-    calc(100vh - 110px);
-
-  overflow: hidden;
+    calc(100vh - 118px);
 }
 
 
 .history-list {
 
-  padding: 9px;
+  padding: 10px;
 
   max-height:
-    calc(100vh - 171px);
+    calc(100vh - 180px);
 
   overflow-y: auto;
 }
 
 
-/* =========================================================
-   BID HISTORY ROW
-========================================================= */
-
 .history-row {
 
-  min-height: 58px;
+  width: 100%;
 
-  margin-bottom: 7px;
+  margin-bottom: 8px;
 
-  padding:
-    9px 10px;
+  padding: 11px;
 
   display: grid;
 
@@ -1618,53 +988,31 @@ button {
     1fr
     auto;
 
-  gap: 3px 8px;
+  gap: 4px 8px;
 
   border:
     1px solid
-    #e2e8f0;
+    #dce4ee;
 
-  border-radius: 9px;
+  border-radius: 10px;
 
-  background:
-    #f8fafc;
-
-  transition:
-    .15s ease;
-}
-
-
-.history-row:hover {
-
-  background:
-    #f1f7ff;
-
-  border-color:
-    #c8ddf6;
-}
-
-
-.history-row:last-child {
-
-  margin-bottom: 0;
+  background: #f8fafc;
 }
 
 
 .history-row b {
 
-  color: #1263c9;
+  color: #0868d5;
 
-  font-size: 15px;
-
-  font-weight: 900;
+  font-size: 16px;
 }
 
 
 .history-row span {
 
-  color: #26364d;
+  color: #17253c;
 
-  font-size: 10px;
+  font-size: 12px;
 
   font-weight: 900;
 
@@ -1677,207 +1025,114 @@ button {
   grid-column:
     1 / -1;
 
-  color: #94a3b8;
-
-  font-size: 8px;
-}
-
-
-/* =========================================================
-   EMPTY HISTORY
-========================================================= */
-
-.empty-history {
-
-  min-height: 250px;
-
-  padding:
-    25px 15px;
-
-  display: flex;
-
-  flex-direction: column;
-
-  align-items: center;
-
-  justify-content: center;
-
-  text-align: center;
-}
-
-
-.history-icon {
-
-  width: 56px;
-
-  height: 56px;
-
-  margin-bottom: 12px;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  border-radius: 50%;
-
-  background:
-    #eef5ff;
-
-  font-size: 24px;
-}
-
-
-.empty-history strong {
-
-  color: #334155;
-
-  font-size: 12px;
-
-  font-weight: 900;
-}
-
-
-.empty-history span {
-
-  max-width: 160px;
-
-  margin-top: 5px;
-
-  color: #94a3b8;
+  color: #64748b;
 
   font-size: 9px;
-
-  line-height: 1.5;
 }
+
+
+.no-history {
+
+  padding: 30px 10px;
+
+  text-align: center;
+
+  color: #64748b;
+
+  font-size: 13px;
+}
+
 
 
 /* =========================================================
-   19. SCROLLBAR
-========================================================= */
+   DESKTOP
+   ========================================================= */
 
-.teams-list::-webkit-scrollbar,
-.history-list::-webkit-scrollbar,
-.players-table-container::-webkit-scrollbar {
+@media (min-width: 1500px) {
 
-  width: 5px;
-
-  height: 5px;
-}
-
-
-.teams-list::-webkit-scrollbar-track,
-.history-list::-webkit-scrollbar-track,
-.players-table-container::-webkit-scrollbar-track {
-
-  background:
-    transparent;
-}
-
-
-.teams-list::-webkit-scrollbar-thumb,
-.history-list::-webkit-scrollbar-thumb,
-.players-table-container::-webkit-scrollbar-thumb {
-
-  border-radius: 10px;
-
-  background:
-    #cbd5e1;
-}
-
-
-/* =========================================================
-   20. LARGE SCREEN
-========================================================= */
-
-@media (min-width: 1600px) {
-
-  .auction-grid {
+  .auction-layout {
 
     grid-template-columns:
-      290px
-      minmax(650px,1fr)
-      290px;
-
-    gap: 17px;
-  }
-
-
-  .current-player-card {
-
-    height: 570px;
-  }
-
-
-  .teams-card,
-  .history-card {
-
-    top: 94px;
+      320px
+      minmax(600px, 1fr)
+      320px;
   }
 
 }
 
 
+
 /* =========================================================
-   21. LAPTOP
-========================================================= */
+   LAPTOP
+   ========================================================= */
 
-@media (max-width: 1250px) {
+@media (max-width: 1200px) {
 
-  .auction-container {
-
-    width:
-      calc(100% - 26px);
-  }
-
-
-  .auction-grid {
+  .auction-layout {
 
     grid-template-columns:
-      230px
-      minmax(450px,1fr)
-      230px;
+      240px
+      minmax(450px, 1fr)
+      240px;
 
-    gap: 11px;
+    gap: 12px;
   }
 
 
-  .current-player-card {
+  .topbar {
 
-    height: 480px;
+    padding-left: 18px;
+
+    padding-right: 18px;
   }
 
 
-  .auction-header {
+  .brand-title {
+
+    font-size: 23px;
+  }
+
+
+  .nav a {
 
     padding:
-      11px 18px;
+      0 11px;
+
+    font-size: 11px;
+  }
+
+
+  .player-card {
+
+    height: 500px;
+
+    min-height: 500px;
   }
 
 }
 
 
+
 /* =========================================================
-   22. SMALL LAPTOP / TABLET LANDSCAPE
-========================================================= */
+   TABLET
+   ========================================================= */
 
-@media (max-width: 1050px) {
+@media (max-width: 1000px) {
 
-  .auction-grid {
+  .auction-layout {
 
     grid-template-columns:
-      225px
-      minmax(0,1fr);
+      240px
+      minmax(0, 1fr);
   }
 
 
-  .history-card {
+  .history-panel {
+
+    position: static;
 
     grid-column:
       1 / -1;
-
-    position: static;
 
     max-height: none;
   }
@@ -1885,14 +1140,14 @@ button {
 
   .history-list {
 
-    max-height: 260px;
+    max-height: 300px;
 
     display: grid;
 
     grid-template-columns:
-      repeat(2,minmax(0,1fr));
+      repeat(2, 1fr);
 
-    gap: 7px;
+    gap: 8px;
   }
 
 
@@ -1901,25 +1156,19 @@ button {
     margin-bottom: 0;
   }
 
-
-  .current-player-card {
-
-    height: 500px;
-  }
-
 }
 
 
+
 /* =========================================================
-   23. TABLET
-========================================================= */
+   MOBILE
+   ========================================================= */
 
-@media (max-width: 800px) {
+@media (max-width: 700px) {
 
-  .auction-header {
+  .topbar {
 
-    padding:
-      10px 14px;
+    padding: 12px;
 
     flex-wrap: wrap;
 
@@ -1927,671 +1176,200 @@ button {
   }
 
 
-  .auction-live {
+  .brand-title {
 
-    margin-left: auto;
+    font-size: 20px;
   }
 
 
-  .header-actions {
+  .brand-subtitle {
+
+    font-size: 8px;
+  }
+
+
+  .live-status {
+
+    margin-left: auto;
+
+    font-size: 10px;
+  }
+
+
+  .nav {
 
     width: 100%;
-
-    margin-left: 0;
 
     display: grid;
 
     grid-template-columns:
       1fr
       1fr;
-
-    gap: 7px;
   }
 
 
-  .header-btn {
+  .nav a {
 
     width: 100%;
+
+    min-height: 38px;
+
+    font-size: 10px;
   }
 
 
-  .auction-container {
+  .auction-layout {
 
-    width:
-      calc(100% - 18px);
+    width: 94%;
 
-    margin-top: 11px;
+    margin-top: 14px;
+
+    grid-template-columns: 1fr;
+
+    gap: 14px;
   }
 
 
-  .auction-status-bar {
-
-    min-height: 44px;
-
-    padding:
-      0 11px;
-  }
-
-
-  .auction-grid {
-
-    grid-template-columns:
-      1fr;
-
-    gap: 11px;
-  }
-
-
-  .auction-main {
+  .auction-center {
 
     order: 1;
   }
 
 
-  .teams-card {
+  .teams-panel {
 
     order: 2;
 
     position: static;
-
-    max-height: none;
   }
 
 
-  .history-card {
+  .history-panel {
 
     order: 3;
 
     grid-column: auto;
 
     position: static;
-
-    max-height: none;
   }
 
 
-  .teams-list {
+  .player-card {
 
-    max-height: none;
+    height: 420px;
 
-    display: grid;
-
-    grid-template-columns:
-      repeat(2,minmax(0,1fr));
-
-    gap: 7px;
+    min-height: 420px;
   }
 
 
-  .team-row {
-
-    margin-bottom: 0;
-  }
-
-
-  .history-list {
-
-    max-height: none;
-
-    display: block;
-  }
-
-
-  .history-row {
-
-    margin-bottom: 7px;
-  }
-
-
-  .current-player-card {
-
-    height: 450px;
-  }
-
-
-  .auction-page .player-info {
-
-    padding:
-      90px 18px
-      18px;
-  }
-
-
-  .price-grid {
-
-    gap: 6px;
-  }
-
-
-  .price-grid > div {
-
-    padding:
-      8px;
-  }
-
-}
-
-
-/* =========================================================
-   24. MOBILE
-========================================================= */
-
-@media (max-width: 600px) {
-
-  .auction-header {
-
-    min-height: auto;
-
-    padding:
-      10px 11px;
-
-    gap: 9px;
-  }
-
-
-  .header-left {
-
-    gap: 9px;
-  }
-
-
-  .logo-mark {
-
-    width: 38px;
-
-    height: 38px;
-
-    border-radius: 10px;
-
-    font-size: 19px;
-  }
-
-
-  .brand-name {
+  .empty-content h1 {
 
     font-size: 18px;
   }
 
 
-  .brand-subtitle {
-
-    margin-top: 4px;
-
-    font-size: 6.5px;
-
-    letter-spacing: 1.4px;
-  }
-
-
-  .auction-live {
-
-    margin-left: auto;
-
-    font-size: 8px;
-
-    letter-spacing: .4px;
-  }
-
-
-  .live-pulse {
-
-    width: 7px;
-
-    height: 7px;
-  }
-
-
-  .auction-container {
-
-    width:
-      calc(100% - 14px);
-
-    margin:
-      9px auto
-      25px;
-  }
-
-
-  .auction-status-bar {
-
-    min-height: 42px;
-
-    margin-bottom: 9px;
-
-    padding:
-      0 9px;
-
-    gap: 5px;
-  }
-
-
-  .status-left {
-
-    gap: 6px;
-
-    overflow: hidden;
-  }
-
-
-  .status-left span {
-
-    font-size: 7px;
-
-    overflow: hidden;
-
-    text-overflow: ellipsis;
-
-    white-space: nowrap;
-  }
-
-
-  .status-left strong {
-
-    font-size: 8px;
-  }
-
-
-  .status-divider {
-
-    height: 10px;
-  }
-
-
-  .status-right span {
-
-    display: none;
-  }
-
-
-  .status-right strong {
-
-    font-size: 11px;
-  }
-
-
-  .auction-grid {
-
-    gap: 9px;
-  }
-
-
-  .current-player-card {
-
-    height: 390px;
-
-    border-radius: 12px;
-  }
-
-
-  .empty-auction {
-
-    padding:
-      18px;
-  }
-
-
-  .empty-auction-icon {
-
-    width: 68px;
-
-    height: 68px;
-
-    margin-bottom: 14px;
-
-    font-size: 32px;
-  }
-
-
-  .empty-auction h1 {
-
-    font-size: 19px;
-  }
-
-
-  .empty-auction p {
-
-    font-size: 9px;
-  }
-
-
-  .waiting-badge {
-
-    margin-top: 13px;
-
-    font-size: 7px;
-  }
-
-
-  .auction-page .player-info {
-
-    padding:
-      80px 14px
-      14px;
-  }
-
-
-  .auction-tag {
-
-    padding:
-      5px 8px;
-
-    margin-bottom: 6px;
-
-    font-size: 7px;
-  }
-
-
-  .player-info h1 {
-
-    font-size: 24px;
-  }
-
-
-  .player-info .role {
-
-    margin-top: 4px;
-
-    font-size: 11px;
-  }
-
-
-  .player-info .details {
-
-    margin-top: 4px;
-
-    font-size: 9px;
-  }
-
-
-  .price-grid {
-
-    margin-top: 10px;
-
-    grid-template-columns:
-      repeat(3,1fr);
-
-    gap: 5px;
-  }
-
-
-  .price-grid > div {
-
-    padding:
-      7px;
-  }
-
-
-  .price-grid small {
-
-    font-size: 6px;
-  }
-
-
-  .price-grid b {
-
-    margin-top: 3px;
-
-    font-size: 12px;
-  }
-
-
-  .bid-dashboard {
-
-    grid-template-columns:
-      1fr
-      1fr;
-
-    gap: 7px;
-  }
-
-
-  .bid-card {
-
-    min-height: 87px;
-
-    padding:
-      12px;
-  }
-
-
-  .bid-card-label {
-
-    font-size: 7px;
-  }
-
-
-  .bid-icon {
-
-    font-size: 11px;
-  }
-
-
-  .current-bid-value {
-
-    margin-top: 6px;
-
-    font-size: 23px;
-  }
-
-
-  .highest-bidder {
-
-    margin-top: 8px;
-
-    font-size: 20px;
-  }
-
-
-  .bid-helper {
-
-    margin-top: 4px;
-
-    font-size: 7px;
-  }
-
-
-  .section-header {
-
-    min-height: 55px;
-
-    padding:
-      10px 12px;
-  }
-
-
-  .section-header h2 {
-
-    font-size: 12px;
-  }
-
-
-  .section-header p {
-
-    font-size: 8px;
-  }
-
-
-  .players-table {
-
-    min-width: 640px;
-  }
-
-
-  .teams-list {
-
-    grid-template-columns:
-      1fr
-      1fr;
-  }
-
-
-  .team-row {
-
-    min-height: 59px;
-
-    padding:
-      8px;
-  }
-
-
-  .team-row > div {
-
-    font-size: 9px;
-  }
-
-
-  .team-row > div b {
-
-    min-width: 26px;
-
-    font-size: 9px;
-  }
-
-
-  .team-row > strong {
+  .empty-content p {
 
     font-size: 10px;
   }
 
 
-  .team-row > small {
+  .auction-icon {
 
-    font-size: 8px;
-  }
+    width: 70px;
 
-}
+    height: 70px;
 
-
-/* =========================================================
-   25. VERY SMALL PHONES
-========================================================= */
-
-@media (max-width: 420px) {
-
-  .brand-name {
-
-    font-size: 16px;
+    font-size: 35px;
   }
 
 
-  .brand-subtitle {
-
-    font-size: 6px;
-
-    letter-spacing: 1px;
-  }
-
-
-  .auction-live {
-
-    font-size: 7px;
-  }
-
-
-  .header-btn {
-
-    min-height: 34px;
+  .player-info {
 
     padding:
-      0 8px;
-
-    font-size: 9px;
-  }
-
-
-  .auction-status-bar {
-
-    font-size: 7px;
-  }
-
-
-  .current-player-card {
-
-    height: 365px;
+      70px 16px
+      15px;
   }
 
 
   .player-info h1 {
 
-    font-size: 21px;
+    font-size: 25px;
+  }
+
+
+  .price-grid {
+
+    grid-template-columns:
+      repeat(3, 1fr);
+
+    gap: 5px;
   }
 
 
   .price-grid > div {
 
-    padding:
-      6px;
-  }
-
-
-  .price-grid small {
-
-    font-size: 5.5px;
+    padding: 7px;
   }
 
 
   .price-grid b {
 
-    font-size: 11px;
+    font-size: 13px;
   }
 
 
-  .bid-dashboard {
+  .bid-section {
 
-    grid-template-columns:
-      1fr;
+    grid-template-columns: 1fr;
   }
 
 
-  .bid-card {
+  .bid-box {
 
-    min-height: 79px;
+    min-height: 75px;
   }
 
 
-  .teams-list {
+  .bid-value,
+  .highest-team {
 
-    grid-template-columns:
-      1fr;
+    font-size: 23px;
   }
 
-}
 
+  .history-list {
 
-/* =========================================================
-   26. ACCESSIBILITY / REDUCED MOTION
-========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-  *,
-  *::before,
-  *::after {
-
-    animation-duration:
-      0.01ms !important;
-
-    animation-iteration-count:
-      1 !important;
-
-    transition-duration:
-      0.01ms !important;
-
-    scroll-behavior:
-      auto !important;
+    display: block;
   }
 
 }
 
 
+
 /* =========================================================
-   27. SELECTION
-========================================================= */
+   SMALL MOBILE
+   ========================================================= */
 
-::selection {
+@media (max-width: 400px) {
 
-  color: white;
+  .brand-title {
 
-  background:
-    #1263c9;
+    font-size: 18px;
+  }
+
+
+  .player-card {
+
+    height: 370px;
+
+    min-height: 370px;
+  }
+
+
+  .price-grid {
+
+    grid-template-columns: 1fr;
+  }
+
 }
