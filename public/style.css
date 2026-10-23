@@ -1,876 +1,2024 @@
-/* ===============================
-   GLOBAL
-================================ */
+/* =========================================================
+   SGPPL-2 LIVE CRICKET AUCTION
+   PROFESSIONAL AUCTION UI
+   ========================================================= */
+
+
+/* =========================================================
+   RESET
+========================================================= */
 
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
-html,
-body {
-  margin: 0;
-  padding: 0;
+
+html {
+  width: 100%;
   min-height: 100%;
 }
 
+
 body {
+  width: 100%;
+  min-height: 100vh;
+
   font-family:
     Inter,
-    system-ui,
-    -apple-system,
-    BlinkMacSystemFont,
-    "Segoe UI",
+    Arial,
+    Helvetica,
     sans-serif;
 
   background:
-    radial-gradient(
-      circle at 20% 0%,
-      rgba(30, 136, 229, 0.18),
-      transparent 35%
-    ),
-    radial-gradient(
-      circle at 90% 10%,
-      rgba(14, 165, 233, 0.12),
-      transparent 30%
-    ),
-    #06152e;
+    #071a35;
 
-  color: #e5eefb;
+  color: #172033;
+
+  overflow-x: hidden;
 }
 
-/* ===============================
-   TOPBAR
-================================ */
 
-.topbar {
-  min-height: 76px;
-
-  display: flex;
-  align-items: center;
-
-  padding: 12px 4%;
-
-  background:
-    rgba(4, 18, 40, 0.97);
-
-  border-bottom:
-    1px solid rgba(255, 255, 255, 0.12);
-
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-
-  backdrop-filter: blur(10px);
+button,
+a,
+input,
+select {
+  font-family: inherit;
 }
 
-.brand {
-  font-weight: 900;
-  font-size: 24px;
-  color: white;
-}
 
-.brand span {
-  color: #ffb703;
-}
-
-.brand small {
-  display: block;
-
-  margin-top: 4px;
-
-  color: #9fb6d8;
-
-  font-size: 10px;
-
-  letter-spacing: 2px;
-}
-
-.nav {
-  margin-left: auto;
-
-  display: flex;
-  gap: 10px;
-}
-
-.nav a {
-  color: white;
-
+a {
   text-decoration: none;
-
-  border:
-    1px solid rgba(255, 255, 255, 0.25);
-
-  padding: 10px 16px;
-
-  border-radius: 9px;
-
-  font-weight: 700;
-
-  transition: 0.2s;
 }
 
-.nav a:hover {
-  background:
-    rgba(255, 255, 255, 0.08);
-}
 
-.nav .admin {
-  background: #1677ee;
-  border-color: #1677ee;
-}
 
-/* ===============================
-   MAIN
-================================ */
+/* =========================================================
+   BODY BACKGROUND
+========================================================= */
 
-.wrap {
-  width: min(1400px, 94%);
-
-  margin:
-    30px auto 60px;
-}
-
-/* ===============================
-   AUCTION GRID
-================================ */
-
-.auction-grid {
-  display: grid;
-
-  grid-template-columns:
-    1.5fr
-    1fr
-    0.9fr;
-
-  gap: 20px;
-}
-
-/* ===============================
-   PANEL
-================================ */
-
-.panel {
-  background:
-    rgba(255, 255, 255, 0.97);
-
-  color: #14213d;
-
-  border-radius: 18px;
-
-  overflow: hidden;
-
-  box-shadow:
-    0 20px 60px rgba(0, 0, 0, 0.28);
-}
-
-.panel-head {
-  padding: 16px 18px;
+.auction-page {
 
   background:
-    linear-gradient(
-      135deg,
-      #0b2850,
-      #123b70
-    );
 
-  color: white;
+    radial-gradient(
+      circle at 15% 0%,
+      rgba(37, 99, 235, 0.16),
+      transparent 28%
+    ),
+
+    radial-gradient(
+      circle at 90% 0%,
+      rgba(14, 165, 233, 0.10),
+      transparent 25%
+    ),
+
+    #071a35;
+}
+
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.auction-header {
+
+  width: 100%;
+
+  min-height: 74px;
+
+  padding:
+    10px 28px;
 
   display: flex;
+
+  align-items: center;
 
   justify-content: space-between;
 
-  align-items: center;
-}
-
-.panel-head h2 {
-  margin: 0;
-
-  font-size: 18px;
-}
-
-.panel-body {
-  padding: 18px;
-}
-
-/* ===============================
-   PLAYER CARD
-================================ */
-
-.player-card {
-  position: relative;
+  gap: 20px;
 
   background:
-    linear-gradient(
-      145deg,
-      #071b36,
-      #0c3261
-    );
+    rgba(4, 17, 38, 0.98);
 
-  border-radius: 16px;
+  border-bottom:
+    1px solid
+    rgba(255,255,255,0.09);
 
-  overflow: hidden;
+  position: sticky;
 
-  min-height: 500px;
+  top: 0;
+
+  z-index: 1000;
+
+  backdrop-filter:
+    blur(12px);
+}
+
+
+
+/* HEADER LEFT */
+
+.header-left {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 11px;
+
+  min-width: 0;
+}
+
+
+.logo-mark {
+
+  width: 44px;
+
+  height: 44px;
 
   display: flex;
 
   align-items: center;
 
   justify-content: center;
-}
 
-.player-card img {
-  width: 100%;
-
-  height: 500px;
-
-  object-fit: cover;
-}
-
-.player-info {
-  position: absolute;
-
-  left: 0;
-  right: 0;
-  bottom: 0;
-
-  padding: 25px 20px 20px;
+  border-radius: 11px;
 
   background:
     linear-gradient(
-      transparent,
-      rgba(0, 0, 0, 0.9)
+      135deg,
+      #ffb703,
+      #f59e0b
     );
 
-  color: white;
+  font-size: 23px;
+
+  box-shadow:
+    0 8px 20px
+    rgba(245,158,11,0.20);
 }
 
-.player-info h1 {
-  margin: 0;
 
-  font-size: 32px;
+.brand-name {
+
+  color: #ffffff;
+
+  font-size: 22px;
+
+  font-weight: 900;
+
+  letter-spacing: .5px;
 }
 
-.player-meta {
+
+.brand-name span {
+
+  color: #ffb703;
+}
+
+
+.brand-subtitle {
+
+  margin-top: 2px;
+
+  color: #7892b3;
+
+  font-size: 8px;
+
+  font-weight: 800;
+
+  letter-spacing: 2px;
+}
+
+
+
+/* LIVE */
+
+.auction-live {
+
   display: flex;
-
-  flex-wrap: wrap;
-
-  gap: 8px;
-
-  margin-top: 10px;
-}
-
-.badge {
-  display: inline-flex;
 
   align-items: center;
 
-  padding: 6px 10px;
+  gap: 8px;
 
-  border-radius: 999px;
+  color: #ff5b5b;
 
-  background:
-    rgba(255, 255, 255, 0.12);
+  font-size: 11px;
 
-  border:
-    1px solid rgba(255, 255, 255, 0.18);
+  font-weight: 900;
 
-  font-size: 12px;
+  letter-spacing: .7px;
 
-  font-weight: 700;
+  white-space: nowrap;
 }
 
-/* ===============================
-   BID AREA
-================================ */
 
-.bid-area {
-  margin-top: 18px;
+.live-pulse {
+
+  width: 8px;
+
+  height: 8px;
+
+  border-radius: 50%;
+
+  background: #ff4242;
+
+  box-shadow:
+    0 0 0 5px
+    rgba(255,66,66,0.10),
+
+    0 0 15px
+    rgba(255,66,66,0.75);
+
+  animation:
+    pulseLive 1.4s infinite;
+}
+
+
+@keyframes pulseLive {
+
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: .45;
+  }
+
+  100% {
+    opacity: 1;
+  }
+
+}
+
+
+
+/* HEADER ACTIONS */
+
+.header-actions {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+}
+
+
+.header-btn {
+
+  min-height: 38px;
+
+  padding:
+    0 13px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 6px;
+
+  border-radius: 8px;
+
+  font-size: 11px;
+
+  font-weight: 800;
+
+  white-space: nowrap;
+
+  transition:
+    all .2s ease;
+}
+
+
+.register-btn {
+
+  color: #dcecff;
+
+  background:
+    rgba(255,255,255,0.05);
+
+  border:
+    1px solid
+    rgba(255,255,255,0.14);
+}
+
+
+.register-btn:hover {
+
+  background:
+    rgba(255,255,255,0.10);
+
+  transform:
+    translateY(-1px);
+}
+
+
+.admin-btn {
+
+  color: #ffffff;
+
+  background:
+    #1677ee;
+
+  border:
+    1px solid
+    #1677ee;
+
+  box-shadow:
+    0 6px 16px
+    rgba(22,119,238,0.25);
+}
+
+
+.admin-btn:hover {
+
+  background:
+    #0e66d3;
+
+  transform:
+    translateY(-1px);
+}
+
+
+
+/* =========================================================
+   MAIN CONTAINER
+========================================================= */
+
+.auction-container {
+
+  width: min(
+    1800px,
+    calc(100% - 32px)
+  );
+
+  margin:
+    18px auto
+    40px;
+}
+
+
+
+/* =========================================================
+   AUCTION STATUS BAR
+========================================================= */
+
+.auction-status-bar {
+
+  width: 100%;
+
+  min-height: 46px;
+
+  margin-bottom: 14px;
+
+  padding:
+    0 15px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  background:
+    rgba(255,255,255,0.055);
+
+  border:
+    1px solid
+    rgba(255,255,255,0.08);
+
+  border-radius: 10px;
+
+  color: #a9bed8;
+
+  font-size: 10px;
+}
+
+
+.status-left,
+.status-right {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+}
+
+
+.status-left strong {
+
+  color: #ffffff;
+
+  font-size: 10px;
+}
+
+
+.status-live-dot {
+
+  width: 7px;
+
+  height: 7px;
+
+  background: #22c55e;
+
+  border-radius: 50%;
+
+  box-shadow:
+    0 0 10px
+    rgba(34,197,94,.75);
+}
+
+
+.status-divider {
+
+  width: 1px;
+
+  height: 14px;
+
+  background:
+    rgba(255,255,255,0.15);
+
+  margin:
+    0 4px;
+}
+
+
+.status-right strong {
+
+  color: #ffcf4a;
+
+  font-size: 12px;
+}
+
+
+
+/* =========================================================
+   MAIN GRID
+========================================================= */
+
+.auction-grid {
 
   display: grid;
 
   grid-template-columns:
-    1fr 1fr;
+    270px
+    minmax(500px, 1fr)
+    270px;
 
-  gap: 15px;
+  gap: 14px;
+
+  align-items: start;
 }
 
-.bid-box {
-  background:
-    #f1f5f9;
 
-  border:
-    1px solid #dbe4ef;
 
-  border-radius: 14px;
+/* =========================================================
+   COMMON WHITE CARDS
+========================================================= */
 
-  padding: 16px;
+.teams-card,
+.players-card,
+.history-card,
+.bid-card {
 
-  text-align: center;
-}
+  background: #ffffff;
 
-.bid-label {
-  font-size: 12px;
-
-  text-transform: uppercase;
-
-  letter-spacing: 1px;
-
-  color: #64748b;
-
-  font-weight: 800;
-}
-
-.bid-value {
-  font-size: 36px;
-
-  font-weight: 900;
-
-  margin-top: 5px;
-
-  color: #0b2850;
-}
-
-.highest-team {
-  font-size: 18px;
-
-  font-weight: 900;
-
-  color: #1677ee;
-
-  margin-top: 5px;
-}
-
-/* ===============================
-   TEAM LIST
-================================ */
-
-.team-list {
-  display: grid;
-
-  gap: 10px;
-}
-
-.team-row {
-  border:
-    1px solid #dbe4ef;
-
-  border-radius: 12px;
-
-  padding: 12px;
-
-  background: #f8fafc;
-
-  transition: 0.2s;
-}
-
-.team-row:hover {
-  transform: translateY(-1px);
+  border-radius: 13px;
 
   box-shadow:
-    0 5px 15px rgba(0, 0, 0, 0.08);
+    0 12px 35px
+    rgba(0,0,0,0.22);
 }
 
-.team-top {
+
+
+/* =========================================================
+   SECTION HEADER
+========================================================= */
+
+.section-header {
+
+  min-height: 62px;
+
+  padding:
+    12px 15px;
+
   display: flex;
+
+  align-items: center;
 
   justify-content: space-between;
 
-  align-items: center;
+  gap: 10px;
+
+  background:
+    #ffffff;
+
+  border-bottom:
+    1px solid
+    #e8edf3;
 }
 
-.team-name {
+
+.section-header h2 {
+
+  color: #13233d;
+
+  font-size: 14px;
+
   font-weight: 900;
+
+  letter-spacing: .2px;
 }
 
-.team-code {
-  font-size: 11px;
 
-  color: #64748b;
+.section-header p {
 
   margin-top: 3px;
+
+  color: #8290a3;
+
+  font-size: 9px;
 }
 
-.team-points {
-  font-size: 16px;
-
-  font-weight: 900;
-
-  color: #1677ee;
-}
 
 .team-count {
-  font-size: 12px;
 
-  color: #64748b;
+  min-width: 27px;
 
-  margin-top: 5px;
+  height: 27px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 7px;
+
+  background:
+    #edf5ff;
+
+  color:
+    #1263c9;
+
+  font-size: 10px;
+
+  font-weight: 900;
 }
 
-/* ===============================
-   BID HISTORY
-================================ */
 
-.history {
-  display: grid;
 
-  gap: 7px;
+/* =========================================================
+   LEFT TEAM PANEL
+========================================================= */
 
-  max-height: 350px;
+.teams-card {
+
+  overflow: hidden;
+
+  position: sticky;
+
+  top: 88px;
+
+  max-height:
+    calc(100vh - 105px);
+}
+
+
+.teams-list {
+
+  padding:
+    9px;
+
+  max-height:
+    calc(100vh - 170px);
 
   overflow-y: auto;
 }
 
-.history-row {
-  display: flex;
 
-  justify-content: space-between;
+.team-row {
+
+  width: 100%;
+
+  min-height: 64px;
+
+  margin-bottom: 7px;
+
+  padding:
+    9px 10px;
+
+  display: grid;
+
+  grid-template-columns:
+    1fr
+    auto;
+
+  gap: 2px 8px;
 
   align-items: center;
+
+  border:
+    1px solid
+    #e2e8f0;
+
+  border-radius: 9px;
 
   background:
     #f8fafc;
 
-  border:
-    1px solid #e2e8f0;
-
-  padding: 10px 12px;
-
-  border-radius: 9px;
+  transition:
+    .18s ease;
 }
 
-.history-team {
-  font-weight: 800;
+
+.team-row:last-child {
+
+  margin-bottom: 0;
 }
 
-.history-amount {
-  font-weight: 900;
 
-  color: #1677ee;
-}
-
-/* ===============================
-   ADMIN
-================================ */
-
-.admin-grid {
-  display: grid;
-
-  grid-template-columns:
-    280px
-    1fr;
-
-  gap: 20px;
-}
-
-.admin-sidebar {
-  background:
-    rgba(255, 255, 255, 0.97);
-
-  color: #14213d;
-
-  border-radius: 18px;
-
-  padding: 18px;
-
-  box-shadow:
-    0 20px 60px rgba(0, 0, 0, 0.28);
-}
-
-.admin-menu {
-  display: grid;
-
-  gap: 10px;
-}
-
-.admin-menu button {
-  width: 100%;
-
-  border: 0;
-
-  border-radius: 10px;
-
-  padding: 13px;
+.team-row:hover {
 
   background:
-    #eaf2ff;
+    #f0f7ff;
 
-  color: #0b2850;
+  border-color:
+    #c8ddf6;
 
-  font-weight: 800;
-
-  cursor: pointer;
+  transform:
+    translateX(2px);
 }
 
-.admin-menu button.active {
-  background:
-    #1677ee;
 
-  color: white;
+.team-row > div {
+
+  min-width: 0;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+
+  color:
+    #334155;
+
+  font-size: 11px;
+
+  font-weight: 700;
 }
 
-/* ===============================
-   ADMIN PLAYER LIST
-================================ */
 
-.player-list {
-  display: grid;
+.team-row > div b {
 
-  gap: 10px;
-}
-
-.player-list-row {
-  display: flex;
-
-  align-items: center;
-
-  gap: 12px;
-
-  padding: 12px;
-
-  border:
-    1px solid #dbe4ef;
-
-  border-radius: 12px;
-
-  background: white;
-}
-
-.player-list-row img {
-  width: 58px;
-
-  height: 58px;
-
-  border-radius: 10px;
-
-  object-fit: cover;
-}
-
-.player-list-info {
-  flex: 1;
-}
-
-.player-list-name {
-  font-weight: 900;
-
-  color: #0b2850;
-}
-
-.player-list-meta {
-  margin-top: 4px;
-
-  font-size: 12px;
-
-  color: #64748b;
-}
-
-.player-list-actions {
-  display: flex;
-
-  gap: 7px;
-
-  flex-wrap: wrap;
-}
-
-.btn {
-  border: 0;
-
-  padding: 9px 13px;
-
-  border-radius: 8px;
-
-  cursor: pointer;
-
-  font-weight: 800;
-}
-
-.btn-primary {
-  background: #1677ee;
-
-  color: white;
-}
-
-.btn-success {
-  background: #16a34a;
-
-  color: white;
-}
-
-.btn-danger {
-  background: #dc2626;
-
-  color: white;
-}
-
-.btn-warning {
-  background: #f59e0b;
-
-  color: #111827;
-}
-
-.btn-secondary {
-  background: #e2e8f0;
-
-  color: #0f172a;
-}
-
-/* ===============================
-   LIVE ADMIN
-================================ */
-
-.live-admin-card {
-  background:
-    white;
-
-  border-radius: 18px;
-
-  padding: 20px;
-
-  color: #14213d;
-
-  box-shadow:
-    0 20px 60px rgba(0, 0, 0, 0.28);
-}
-
-.live-admin-card h2 {
-  margin-top: 0;
-}
-
-.admin-bid-buttons {
-  display: grid;
-
-  grid-template-columns:
-    repeat(4, 1fr);
-
-  gap: 10px;
-
-  margin-top: 18px;
-}
-
-.admin-bid-buttons button {
-  min-height: 50px;
-
-  border: 0;
-
-  border-radius: 10px;
-
-  background:
-    #1677ee;
-
-  color: white;
-
-  font-weight: 900;
-
-  cursor: pointer;
-}
-
-.admin-bid-buttons button:hover {
-  background:
-    #0f63cc;
-}
-
-/* ===============================
-   LOGIN
-================================ */
-
-.login-card {
-  width: min(450px, 94%);
-
-  margin: 80px auto;
-
-  background: white;
-
-  color: #14213d;
-
-  border-radius: 18px;
-
-  padding: 28px;
-
-  box-shadow:
-    0 20px 60px rgba(0, 0, 0, 0.35);
-}
-
-.login-card h1 {
-  margin-top: 0;
-
-  text-align: center;
-}
-
-.login-card .field {
-  margin-bottom: 16px;
-}
-
-/* ===============================
-   FORM
-================================ */
-
-.field {
-  display: flex;
-
-  flex-direction: column;
-
-  gap: 7px;
-}
-
-.field label {
-  font-weight: 800;
-
-  font-size: 13px;
-}
-
-.field input,
-.field select {
-  width: 100%;
-
-  min-height: 44px;
-
-  border:
-    1px solid #cbd5e1;
-
-  border-radius: 9px;
-
-  padding: 0 12px;
-
-  outline: none;
-
-  font-size: 14px;
-}
-
-.field input:focus,
-.field select:focus {
-  border-color: #1677ee;
-
-  box-shadow:
-    0 0 0 3px rgba(22, 119, 238, 0.12);
-}
-
-/* ===============================
-   STATUS
-================================ */
-
-.status {
   display: inline-flex;
 
-  align-items: center;
+  min-width: 30px;
 
-  padding: 5px 9px;
+  margin-right: 4px;
 
-  border-radius: 999px;
+  color:
+    #1263c9;
 
   font-size: 11px;
 
   font-weight: 900;
 }
 
-.status-pending {
-  background: #fef3c7;
 
-  color: #92400e;
+.team-row > strong {
+
+  color:
+    #078046;
+
+  font-size: 12px;
+
+  font-weight: 900;
 }
 
-.status-confirmed {
-  background: #dcfce7;
 
-  color: #166534;
+.team-row > small {
+
+  grid-column:
+    1 / -1;
+
+  color:
+    #94a3b8;
+
+  font-size: 9px;
 }
 
-.status-sold {
-  background: #dbeafe;
 
-  color: #1d4ed8;
+
+/* =========================================================
+   CENTER
+========================================================= */
+
+.auction-main {
+
+  min-width: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 13px;
 }
 
-.status-unsold {
-  background: #fee2e2;
 
-  color: #991b1b;
+
+/* =========================================================
+   CURRENT PLAYER CARD
+========================================================= */
+
+.current-player-card {
+
+  width: 100%;
+
+  height: 520px;
+
+  position: relative;
+
+  overflow: hidden;
+
+  border-radius: 15px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #0b2c59,
+      #0d4d91
+    );
+
+  box-shadow:
+    0 18px 50px
+    rgba(0,0,0,0.35);
 }
 
-/* ===============================
-   RESPONSIVE
-================================ */
 
-@media (max-width: 1100px) {
+.current-player-card.empty {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  text-align: center;
+
+  background:
+
+    radial-gradient(
+      circle at center,
+      rgba(34,119,238,0.25),
+      transparent 40%
+    ),
+
+    linear-gradient(
+      145deg,
+      #0a2348,
+      #082d5e
+    );
+}
+
+
+.empty-auction {
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding:
+    25px;
+}
+
+
+.empty-auction-icon {
+
+  width: 82px;
+
+  height: 82px;
+
+  margin-bottom: 18px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background:
+    rgba(255,255,255,0.08);
+
+  border:
+    1px solid
+    rgba(255,255,255,0.10);
+
+  font-size: 40px;
+
+  box-shadow:
+    0 15px 30px
+    rgba(0,0,0,0.20);
+}
+
+
+.empty-auction h1 {
+
+  color: #ffffff;
+
+  font-size:
+    clamp(20px, 2.5vw, 29px);
+
+  font-weight: 900;
+}
+
+
+.empty-auction p {
+
+  margin-top: 8px;
+
+  color:
+    #a9c3e3;
+
+  font-size: 11px;
+}
+
+
+.waiting-badge {
+
+  margin-top: 16px;
+
+  padding:
+    7px 12px;
+
+  border-radius: 50px;
+
+  background:
+    rgba(255,255,255,0.08);
+
+  border:
+    1px solid
+    rgba(255,255,255,0.12);
+
+  color:
+    #ffcf4a;
+
+  font-size: 9px;
+
+  font-weight: 900;
+
+  letter-spacing: 1px;
+}
+
+
+
+/* =========================================================
+   ACTIVE PLAYER
+========================================================= */
+
+.current-player-card .photo-wrap {
+
+  width: 100%;
+
+  height: 100%;
+
+  background:
+    #0b2c59;
+}
+
+
+.current-player-card .photo-wrap img {
+
+  width: 100%;
+
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+}
+
+
+.current-player-card .player-info {
+
+  position: absolute;
+
+  left: 0;
+
+  right: 0;
+
+  bottom: 0;
+
+  padding:
+    100px 25px
+    23px;
+
+  color: #ffffff;
+
+  background:
+
+    linear-gradient(
+      to top,
+      rgba(0,0,0,0.96),
+      rgba(0,0,0,0.78),
+      rgba(0,0,0,0)
+    );
+}
+
+
+.auction-tag {
+
+  display: inline-flex;
+
+  padding:
+    6px 10px;
+
+  margin-bottom: 8px;
+
+  border-radius: 50px;
+
+  background:
+    #e32d2d;
+
+  color:
+    #ffffff;
+
+  font-size: 9px;
+
+  font-weight: 900;
+}
+
+
+.player-info h1 {
+
+  color:
+    #ffffff;
+
+  font-size:
+    clamp(25px, 3vw, 38px);
+
+  line-height: 1.1;
+
+  font-weight: 900;
+}
+
+
+.player-info .role {
+
+  margin-top: 5px;
+
+  color:
+    #ffcf4a;
+
+  font-size: 13px;
+
+  font-weight: 900;
+}
+
+
+.player-info .details {
+
+  margin-top: 4px;
+
+  color:
+    #d6e4f5;
+
+  font-size: 11px;
+}
+
+
+.price-grid {
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, 1fr);
+
+  gap: 8px;
+
+  margin-top: 13px;
+}
+
+
+.price-grid > div {
+
+  padding:
+    9px;
+
+  border-radius: 8px;
+
+  background:
+    rgba(255,255,255,0.10);
+
+  border:
+    1px solid
+    rgba(255,255,255,0.13);
+}
+
+
+.price-grid small {
+
+  display: block;
+
+  color:
+    #9fb6d1;
+
+  font-size: 7px;
+
+  font-weight: 900;
+
+  letter-spacing: .7px;
+}
+
+
+.price-grid b {
+
+  display: block;
+
+  margin-top: 3px;
+
+  color:
+    #ffffff;
+
+  font-size: 16px;
+}
+
+
+
+/* =========================================================
+   BID DASHBOARD
+========================================================= */
+
+.bid-dashboard {
+
+  display: grid;
+
+  grid-template-columns:
+    1fr
+    1fr;
+
+  gap: 12px;
+}
+
+
+.bid-card {
+
+  min-height: 100px;
+
+  padding:
+    15px 17px;
+
+  position: relative;
+
+  overflow: hidden;
+}
+
+
+.bid-card::after {
+
+  content: "";
+
+  position: absolute;
+
+  right: -30px;
+
+  bottom: -45px;
+
+  width: 110px;
+
+  height: 110px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(37,99,235,.06);
+}
+
+
+.current-bid-card {
+
+  border-top:
+    3px solid
+    #1677ee;
+}
+
+
+.highest-bid-card {
+
+  border-top:
+    3px solid
+    #f59e0b;
+}
+
+
+.bid-card-label {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 6px;
+
+  color:
+    #64748b;
+
+  font-size: 9px;
+
+  font-weight: 900;
+
+  letter-spacing: .8px;
+}
+
+
+.bid-icon {
+
+  font-size: 13px;
+}
+
+
+.current-bid-value {
+
+  margin-top: 5px;
+
+  color:
+    #1263c9;
+
+  font-size: 27px;
+
+  font-weight: 900;
+}
+
+
+.highest-bidder {
+
+  margin-top: 7px;
+
+  color:
+    #b86d00;
+
+  font-size: 25px;
+
+  font-weight: 900;
+}
+
+
+.bid-helper {
+
+  margin-top: 2px;
+
+  color:
+    #94a3b8;
+
+  font-size: 8px;
+}
+
+
+
+/* =========================================================
+   PLAYERS CARD
+========================================================= */
+
+.players-card {
+
+  overflow: hidden;
+}
+
+
+.players-header {
+
+  border-bottom:
+    1px solid
+    #e5eaf0;
+}
+
+
+.live-small {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 5px;
+
+  padding:
+    5px 8px;
+
+  border-radius: 50px;
+
+  background:
+    #fff1f1;
+
+  color:
+    #d72f2f;
+
+  font-size: 8px;
+
+  font-weight: 900;
+}
+
+
+.live-small span {
+
+  width: 5px;
+
+  height: 5px;
+
+  border-radius: 50%;
+
+  background:
+    #ef4444;
+}
+
+
+.players-table-container {
+
+  width: 100%;
+
+  overflow-x: auto;
+}
+
+
+.players-table {
+
+  width: 100%;
+
+  min-width: 680px;
+
+  border-collapse: collapse;
+}
+
+
+.players-table th {
+
+  height: 38px;
+
+  padding:
+    0 10px;
+
+  text-align: left;
+
+  background:
+    #f8fafc;
+
+  color:
+    #64748b;
+
+  border-bottom:
+    1px solid
+    #e5e7eb;
+
+  font-size: 8px;
+
+  font-weight: 900;
+
+  letter-spacing: .6px;
+}
+
+
+.players-table td {
+
+  padding:
+    8px 10px;
+
+  color:
+    #334155;
+
+  border-bottom:
+    1px solid
+    #edf0f4;
+
+  font-size: 10px;
+
+  vertical-align: middle;
+}
+
+
+.players-table tbody tr:hover {
+
+  background:
+    #f8fbff;
+}
+
+
+.thumb {
+
+  width: 36px;
+
+  height: 36px;
+
+  display: block;
+
+  object-fit: cover;
+
+  border-radius: 7px;
+
+  background:
+    #e2e8f0;
+}
+
+
+
+/* =========================================================
+   STATUS BADGES
+========================================================= */
+
+.status {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding:
+    4px 7px;
+
+  border-radius: 50px;
+
+  font-size: 7px;
+
+  font-weight: 900;
+
+  letter-spacing: .3px;
+}
+
+
+.status.confirmed {
+
+  color:
+    #166534;
+
+  background:
+    #dcfce7;
+}
+
+
+.status.sold {
+
+  color:
+    #1d4ed8;
+
+  background:
+    #dbeafe;
+}
+
+
+.status.unsold {
+
+  color:
+    #991b1b;
+
+  background:
+    #fee2e2;
+}
+
+
+.status.pending {
+
+  color:
+    #92400e;
+
+  background:
+    #fef3c7;
+}
+
+
+
+/* =========================================================
+   RIGHT BID HISTORY
+========================================================= */
+
+.history-card {
+
+  overflow: hidden;
+
+  position: sticky;
+
+  top: 88px;
+
+  max-height:
+    calc(100vh - 105px);
+}
+
+
+.history-list {
+
+  padding:
+    9px;
+
+  max-height:
+    calc(100vh - 170px);
+
+  overflow-y: auto;
+}
+
+
+.history-row {
+
+  width: 100%;
+
+  min-height: 57px;
+
+  margin-bottom: 7px;
+
+  padding:
+    9px;
+
+  display: grid;
+
+  grid-template-columns:
+    1fr
+    auto;
+
+  gap: 2px 8px;
+
+  border:
+    1px solid
+    #e2e8f0;
+
+  border-radius: 9px;
+
+  background:
+    #f8fafc;
+}
+
+
+.history-row b {
+
+  color:
+    #1263c9;
+
+  font-size: 15px;
+
+  font-weight: 900;
+}
+
+
+.history-row span {
+
+  color:
+    #26364d;
+
+  font-size: 10px;
+
+  font-weight: 900;
+
+  text-align: right;
+}
+
+
+.history-row small {
+
+  grid-column:
+    1 / -1;
+
+  color:
+    #94a3b8;
+
+  font-size: 8px;
+}
+
+
+.empty-history {
+
+  min-height: 250px;
+
+  padding:
+    25px 15px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  text-align: center;
+}
+
+
+.history-icon {
+
+  width: 55px;
+
+  height: 55px;
+
+  margin-bottom: 12px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background:
+    #eef5ff;
+
+  font-size: 24px;
+}
+
+
+.empty-history strong {
+
+  color:
+    #334155;
+
+  font-size: 12px;
+}
+
+
+.empty-history span {
+
+  margin-top: 5px;
+
+  color:
+    #94a3b8;
+
+  font-size: 9px;
+
+  line-height: 1.4;
+}
+
+
+
+/* =========================================================
+   SCROLLBARS
+========================================================= */
+
+.teams-list::-webkit-scrollbar,
+.history-list::-webkit-scrollbar,
+.players-table-container::-webkit-scrollbar {
+
+  width: 5px;
+
+  height: 5px;
+}
+
+
+.teams-list::-webkit-scrollbar-track,
+.history-list::-webkit-scrollbar-track,
+.players-table-container::-webkit-scrollbar-track {
+
+  background:
+    #f1f5f9;
+}
+
+
+.teams-list::-webkit-scrollbar-thumb,
+.history-list::-webkit-scrollbar-thumb,
+.players-table-container::-webkit-scrollbar-thumb {
+
+  background:
+    #cbd5e1;
+
+  border-radius:
+    10px;
+}
+
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1200px) {
 
   .auction-grid {
+
     grid-template-columns:
-      1fr 1fr;
+      230px
+      minmax(450px, 1fr)
+      230px;
+
+    gap: 10px;
   }
 
-  .auction-grid > :first-child {
-    grid-column: 1 / -1;
+
+  .auction-container {
+
+    width:
+      calc(100% - 22px);
+  }
+
+
+  .brand-name {
+
+    font-size: 19px;
+  }
+
+
+  .header-actions {
+
+    gap: 5px;
+  }
+
+
+  .header-btn {
+
+    padding:
+      0 9px;
+
+    font-size: 9px;
   }
 
 }
 
-@media (max-width: 800px) {
 
-  .admin-grid {
-    grid-template-columns: 1fr;
-  }
+
+/* =========================================================
+   SMALL LAPTOP
+========================================================= */
+
+@media (max-width: 1000px) {
 
   .auction-grid {
-    grid-template-columns: 1fr;
+
+    grid-template-columns:
+      240px
+      minmax(0, 1fr);
   }
 
-  .auction-grid > :first-child {
-    grid-column: auto;
+
+  .history-card {
+
+    grid-column:
+      1 / -1;
+
+    position: static;
+
+    max-height:
+      none;
   }
 
-  .admin-bid-buttons {
+
+  .history-list {
+
+    max-height:
+      280px;
+
+    display: grid;
+
     grid-template-columns:
       repeat(2, 1fr);
+
+    gap: 7px;
+  }
+
+
+  .history-row {
+
+    margin-bottom: 0;
   }
 
 }
 
-@media (max-width: 600px) {
 
-  .topbar {
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+  .auction-header {
+
+    min-height:
+      auto;
+
+    padding:
+      10px 12px;
+
     flex-wrap: wrap;
+
+    gap: 9px;
   }
 
-  .nav {
+
+  .logo-mark {
+
+    width: 37px;
+
+    height: 37px;
+
+    font-size: 19px;
+  }
+
+
+  .brand-name {
+
+    font-size: 18px;
+  }
+
+
+  .brand-subtitle {
+
+    font-size: 7px;
+
+    letter-spacing: 1.5px;
+  }
+
+
+  .auction-live {
+
+    margin-left:
+      auto;
+
+    font-size: 9px;
+  }
+
+
+  .header-actions {
+
     width: 100%;
 
-    margin-left: 0;
+    display: grid;
+
+    grid-template-columns:
+      1fr
+      1fr;
+
+    gap: 7px;
   }
 
-  .nav a {
-    flex: 1;
 
-    text-align: center;
+  .header-btn {
+
+    width: 100%;
+
+    min-height: 36px;
+
+    font-size: 10px;
   }
 
-  .wrap {
-    width: 94%;
+
+  .auction-container {
+
+    width:
+      calc(100% - 18px);
+
+    margin-top:
+      10px;
   }
 
-  .player-card {
-    min-height: 420px;
+
+  .auction-status-bar {
+
+    min-height:
+      42px;
+
+    padding:
+      0 10px;
   }
 
-  .player-card img {
-    height: 420px;
+
+  .auction-grid {
+
+    grid-template-columns:
+      1fr;
+
+    gap: 10px;
   }
+
+
+  .auction-main {
+
+    order:
+      1;
+  }
+
+
+  .teams-card {
+
+    order:
+      2;
+
+    position:
+      static;
+
+    max-height:
+      none;
+  }
+
+
+  .history-card {
+
+    order:
+      3;
+
+    grid-column:
+      auto;
+
+    position:
+      static;
+
+    max-height:
+      none;
+  }
+
+
+  .current-player-card {
+
+    height:
+      410px;
+  }
+
+
+  .empty-auction-icon {
+
+    width:
+      70px;
+
+    height:
+      70px;
+
+    font-size:
+      34px;
+  }
+
+
+  .empty-auction h1 {
+
+    font-size:
+      19px;
+  }
+
+
+  .empty-auction p {
+
+    font-size:
+      10px;
+  }
+
+
+  .bid-dashboard {
+
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .bid-card {
+
+    min-height:
+      82px;
+  }
+
+
+  .current-bid-value {
+
+    font-size:
+      24px;
+  }
+
+
+  .highest-bidder {
+
+    font-size:
+      22px;
+  }
+
+
+  .price-grid {
+
+    grid-template-columns:
+      repeat(3, 1fr);
+  }
+
+
+  .player-info {
+
+    padding:
+      75px 15px
+      15px;
+  }
+
 
   .player-info h1 {
-    font-size: 25px;
+
+    font-size:
+      25px;
   }
 
-  .bid-area {
-    grid-template-columns: 1fr;
+
+  .price-grid > div {
+
+    padding:
+      7px;
   }
 
-  .player-list-row {
-    align-items: flex-start;
 
-    flex-wrap: wrap;
+  .price-grid small {
+
+    font-size:
+      6px;
   }
 
-  .player-list-actions {
-    width: 100%;
+
+  .price-grid b {
+
+    font-size:
+      13px;
+  }
+
+
+  .history-list {
+
+    display:
+      block;
+
+    max-height:
+      none;
+  }
+
+
+  .history-row {
+
+    margin-bottom:
+      7px;
+  }
+
+}
+
+
+
+/* =========================================================
+   SMALL PHONE
+========================================================= */
+
+@media (max-width: 420px) {
+
+  .brand-name {
+
+    font-size:
+      16px;
+  }
+
+
+  .auction-live {
+
+    font-size:
+      8px;
+  }
+
+
+  .auction-status-bar {
+
+    font-size:
+      8px;
+  }
+
+
+  .current-player-card {
+
+    height:
+      370px;
+  }
+
+
+  .player-info h1 {
+
+    font-size:
+      22px;
+  }
+
+
+  .price-grid {
+
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .price-grid > div {
+
+    padding:
+      6px;
+  }
+
+
+  .team-row {
+
+    min-height:
+      58px;
   }
 
 }
