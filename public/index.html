@@ -17,16 +17,1338 @@
 
   <title>SGPPL-2 Live Cricket Auction</title>
 
-  <!-- Cache-busting version -->
-  <link
-    rel="stylesheet"
-    href="/style.css?v=10"
-  >
+
+  <!-- =====================================================
+       COMPLETE CSS
+  ====================================================== -->
+
+  <style>
+
+    /* =====================================================
+       RESET
+    ====================================================== */
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+
+    html,
+    body {
+      width: 100%;
+      min-height: 100%;
+    }
+
+
+    body {
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+      background:
+        radial-gradient(
+          circle at 10% 0%,
+          rgba(25, 100, 220, 0.22),
+          transparent 30%
+        ),
+        radial-gradient(
+          circle at 90% 0%,
+          rgba(0, 160, 255, 0.12),
+          transparent 28%
+        ),
+        #06152e;
+
+      color: white;
+
+      overflow-x: hidden;
+    }
+
+
+    /* =====================================================
+       HEADER
+    ====================================================== */
+
+    .topbar {
+
+      width: 100%;
+
+      min-height: 76px;
+
+      padding: 12px 28px;
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 25px;
+
+      background: #041328;
+
+      border-bottom:
+        1px solid
+        rgba(255,255,255,0.12);
+
+      box-shadow:
+        0 5px 25px
+        rgba(0,0,0,0.35);
+
+      position: sticky;
+
+      top: 0;
+
+      z-index: 9999;
+    }
+
+
+    .brand {
+      flex-shrink: 0;
+    }
+
+
+    .brand-title {
+
+      color: #ffbd18;
+
+      font-size: 27px;
+
+      font-weight: 900;
+
+      line-height: 1;
+    }
+
+
+    .brand-subtitle {
+
+      margin-top: 6px;
+
+      color: #9db5d4;
+
+      font-size: 9px;
+
+      font-weight: 800;
+
+      letter-spacing: 2px;
+    }
+
+
+    /* LIVE */
+
+    .live-status {
+
+      display: flex;
+
+      align-items: center;
+
+      gap: 8px;
+
+      color: #ff4545;
+
+      font-size: 13px;
+
+      font-weight: 900;
+
+      white-space: nowrap;
+    }
+
+
+    .live-dot {
+
+      width: 9px;
+
+      height: 9px;
+
+      border-radius: 50%;
+
+      background: #ff2929;
+
+      box-shadow:
+        0 0 12px
+        rgba(255,40,40,0.9);
+
+      animation:
+        pulse 1.2s infinite;
+    }
+
+
+    @keyframes pulse {
+
+      0% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 0.4;
+        transform: scale(0.7);
+      }
+
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+    }
+
+
+    /* NAV */
+
+    .nav {
+
+      margin-left: auto;
+
+      display: flex;
+
+      gap: 10px;
+    }
+
+
+    .nav a {
+
+      min-height: 40px;
+
+      padding: 0 16px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      color: white;
+
+      background:
+        rgba(255,255,255,0.06);
+
+      border:
+        1px solid
+        rgba(255,255,255,0.18);
+
+      border-radius: 9px;
+
+      text-decoration: none;
+
+      font-size: 12px;
+
+      font-weight: 800;
+
+      white-space: nowrap;
+
+      transition: 0.2s;
+    }
+
+
+    .nav a:hover {
+
+      background:
+        rgba(255,255,255,0.14);
+    }
+
+
+    .nav .admin-button {
+
+      background: #1677ee;
+
+      border-color: #1677ee;
+    }
+
+
+    /* =====================================================
+       MAIN 3 COLUMN LAYOUT
+    ====================================================== */
+
+    .auction-layout {
+
+      width: 96%;
+
+      max-width: 1800px;
+
+      margin: 20px auto 40px;
+
+      display: grid;
+
+      grid-template-columns:
+        280px
+        minmax(500px, 1fr)
+        280px;
+
+      gap: 18px;
+
+      align-items: start;
+    }
+
+
+    /* =====================================================
+       COMMON PANEL HEADER
+    ====================================================== */
+
+    .panel-header {
+
+      min-height: 62px;
+
+      padding: 12px 15px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 10px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #0a2850,
+          #104c86
+        );
+
+      color: white;
+    }
+
+
+    .panel-header h2 {
+
+      font-size: 15px;
+
+      font-weight: 900;
+    }
+
+
+    .panel-header p {
+
+      margin-top: 4px;
+
+      color: #a8c1df;
+
+      font-size: 9px;
+
+      letter-spacing: 1px;
+
+      font-weight: 700;
+    }
+
+
+    .badge {
+
+      padding: 6px 9px;
+
+      border-radius: 7px;
+
+      background:
+        rgba(255,255,255,0.12);
+
+      color: #ffcf4a;
+
+      border:
+        1px solid
+        rgba(255,255,255,0.15);
+
+      font-size: 9px;
+
+      font-weight: 900;
+
+      white-space: nowrap;
+    }
+
+
+    .live-badge {
+
+      color: white;
+
+      background: #dc3030;
+
+      border-color: #dc3030;
+    }
+
+
+    /* =====================================================
+       LEFT TEAM PANEL
+    ====================================================== */
+
+    .teams-panel {
+
+      background: white;
+
+      color: #17263d;
+
+      border-radius: 15px;
+
+      overflow: hidden;
+
+      box-shadow:
+        0 15px 40px
+        rgba(0,0,0,0.30);
+
+      position: sticky;
+
+      top: 96px;
+
+      max-height:
+        calc(100vh - 116px);
+    }
+
+
+    .team-list {
+
+      padding: 10px;
+
+      max-height:
+        calc(100vh - 180px);
+
+      overflow-y: auto;
+    }
+
+
+    .team-row {
+
+      width: 100%;
+
+      min-height: 68px;
+
+      margin-bottom: 8px;
+
+      padding: 11px;
+
+      display: grid;
+
+      grid-template-columns:
+        1fr
+        auto;
+
+      gap: 4px 10px;
+
+      align-items: center;
+
+      background: #f7f9fc;
+
+      border:
+        1px solid
+        #dce4ee;
+
+      border-radius: 10px;
+
+      color: #25354d;
+    }
+
+
+    .team-row:hover {
+
+      background: #edf5ff;
+
+      border-color: #b8d3f1;
+    }
+
+
+    .team-row > div {
+
+      font-size: 13px;
+
+      font-weight: 700;
+    }
+
+
+    .team-row > div b {
+
+      color: #075dc6;
+
+      margin-right: 5px;
+
+      font-size: 14px;
+    }
+
+
+    .team-row > strong {
+
+      color: #087542;
+
+      font-size: 15px;
+
+      font-weight: 900;
+    }
+
+
+    .team-row > small {
+
+      grid-column: 1 / -1;
+
+      color: #64748b;
+
+      font-size: 10px;
+    }
+
+
+    /* =====================================================
+       CENTER
+    ====================================================== */
+
+    .auction-center {
+
+      width: 100%;
+
+      min-width: 0;
+
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 15px;
+    }
+
+
+    /* =====================================================
+       PLAYER CARD
+    ====================================================== */
+
+    .player-card {
+
+      width: 100%;
+
+      height: 540px;
+
+      min-height: 540px;
+
+      position: relative;
+
+      overflow: hidden;
+
+      border-radius: 15px;
+
+      background:
+        linear-gradient(
+          145deg,
+          #071e42,
+          #0b4c91
+        );
+
+      box-shadow:
+        0 18px 45px
+        rgba(0,0,0,0.40);
+    }
+
+
+    .player-card.empty {
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      text-align: center;
+    }
+
+
+    .empty-content {
+
+      display: flex;
+
+      flex-direction: column;
+
+      align-items: center;
+
+      padding: 25px;
+    }
+
+
+    .auction-icon {
+
+      width: 90px;
+
+      height: 90px;
+
+      margin-bottom: 20px;
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      border-radius: 50%;
+
+      background:
+        rgba(255,255,255,0.08);
+
+      font-size: 45px;
+    }
+
+
+    .empty-content h1 {
+
+      color: white;
+
+      font-size: 25px;
+
+      font-weight: 900;
+    }
+
+
+    .empty-content p {
+
+      margin-top: 9px;
+
+      color: #a9c5e7;
+
+      font-size: 12px;
+    }
+
+
+    /* =====================================================
+       PLAYER PHOTO
+    ====================================================== */
+
+    .photo-wrap {
+
+      width: 100%;
+
+      height: 100%;
+    }
+
+
+    .photo-wrap img {
+
+      width: 100%;
+
+      height: 100%;
+
+      display: block;
+
+      object-fit: cover;
+    }
+
+
+    /* =====================================================
+       PLAYER INFORMATION
+    ====================================================== */
+
+    .player-info {
+
+      position: absolute;
+
+      left: 0;
+
+      right: 0;
+
+      bottom: 0;
+
+      padding:
+        100px
+        25px
+        22px;
+
+      background:
+        linear-gradient(
+          to top,
+          rgba(0,0,0,0.95),
+          rgba(0,0,0,0.65),
+          transparent
+        );
+    }
+
+
+    .auction-tag {
+
+      display: inline-block;
+
+      margin-bottom: 7px;
+
+      padding: 6px 10px;
+
+      border-radius: 50px;
+
+      background: #1677ee;
+
+      color: white;
+
+      font-size: 10px;
+
+      font-weight: 900;
+    }
+
+
+    .player-info h1 {
+
+      color: white;
+
+      font-size: 38px;
+
+      line-height: 1.1;
+
+      font-weight: 900;
+    }
+
+
+    .player-info .role {
+
+      margin-top: 6px;
+
+      color: #ffcf4a;
+
+      font-size: 15px;
+
+      font-weight: 900;
+    }
+
+
+    .player-info .details {
+
+      margin-top: 5px;
+
+      color: #d5e6fb;
+
+      font-size: 13px;
+    }
+
+
+    /* =====================================================
+       PRICE GRID
+    ====================================================== */
+
+    .price-grid {
+
+      margin-top: 15px;
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(3,1fr);
+
+      gap: 10px;
+    }
+
+
+    .price-grid > div {
+
+      padding: 10px;
+
+      border-radius: 9px;
+
+      background:
+        rgba(255,255,255,0.10);
+
+      border:
+        1px solid
+        rgba(255,255,255,0.15);
+    }
+
+
+    .price-grid small {
+
+      display: block;
+
+      color: #a9c1df;
+
+      font-size: 8px;
+
+      font-weight: 800;
+
+      letter-spacing: .7px;
+    }
+
+
+    .price-grid b {
+
+      display: block;
+
+      margin-top: 4px;
+
+      color: white;
+
+      font-size: 18px;
+    }
+
+
+    /* =====================================================
+       BID SECTION
+    ====================================================== */
+
+    .bid-section {
+
+      display: grid;
+
+      grid-template-columns:
+        1fr
+        1fr;
+
+      gap: 14px;
+    }
+
+
+    .bid-box {
+
+      min-height: 90px;
+
+      padding:
+        15px 18px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content: center;
+
+      background: white;
+
+      border-radius: 13px;
+
+      color: #18263d;
+
+      box-shadow:
+        0 12px 30px
+        rgba(0,0,0,0.22);
+    }
+
+
+    .bid-label {
+
+      color: #64748b;
+
+      font-size: 10px;
+
+      letter-spacing: 1px;
+
+      font-weight: 900;
+    }
+
+
+    .bid-value {
+
+      margin-top: 4px;
+
+      color: #0868d5;
+
+      font-size: 28px;
+
+      font-weight: 900;
+    }
+
+
+    .highest-team {
+
+      margin-top: 4px;
+
+      color: #0868d5;
+
+      font-size: 27px;
+
+      font-weight: 900;
+    }
+
+
+    /* =====================================================
+       PLAYER TABLE
+    ====================================================== */
+
+    .player-list-panel {
+
+      width: 100%;
+
+      overflow: hidden;
+
+      background: white;
+
+      color: #17253c;
+
+      border-radius: 15px;
+
+      box-shadow:
+        0 15px 40px
+        rgba(0,0,0,0.25);
+    }
+
+
+    .table-container {
+
+      width: 100%;
+
+      overflow-x: auto;
+    }
+
+
+    table {
+
+      width: 100%;
+
+      min-width: 650px;
+
+      border-collapse: collapse;
+    }
+
+
+    thead th {
+
+      padding: 12px;
+
+      background: #f1f5f9;
+
+      color: #475569;
+
+      text-align: left;
+
+      font-size: 10px;
+
+      font-weight: 900;
+    }
+
+
+    tbody td {
+
+      padding:
+        10px 12px;
+
+      border-top:
+        1px solid
+        #e5e7eb;
+
+      color: #334155;
+
+      font-size: 12px;
+    }
+
+
+    tbody tr:hover {
+
+      background: #f8fbff;
+    }
+
+
+    .thumb {
+
+      width: 42px;
+
+      height: 42px;
+
+      display: block;
+
+      object-fit: cover;
+
+      border-radius: 8px;
+
+      background: #e2e8f0;
+    }
+
+
+    /* =====================================================
+       STATUS
+    ====================================================== */
+
+    .status {
+
+      display: inline-flex;
+
+      padding: 5px 9px;
+
+      border-radius: 50px;
+
+      font-size: 9px;
+
+      font-weight: 900;
+    }
+
+
+    .status.confirmed {
+
+      background: #dcfce7;
+
+      color: #166534;
+    }
+
+
+    .status.sold {
+
+      background: #dbeafe;
+
+      color: #1d4ed8;
+    }
+
+
+    .status.unsold {
+
+      background: #fee2e2;
+
+      color: #991b1b;
+    }
+
+
+    .status.pending {
+
+      background: #fef3c7;
+
+      color: #92400e;
+    }
+
+
+    /* =====================================================
+       RIGHT - BID HISTORY
+    ====================================================== */
+
+    .history-panel {
+
+      background: white;
+
+      color: #17253c;
+
+      border-radius: 15px;
+
+      overflow: hidden;
+
+      box-shadow:
+        0 15px 40px
+        rgba(0,0,0,0.30);
+
+      position: sticky;
+
+      top: 96px;
+
+      max-height:
+        calc(100vh - 116px);
+    }
+
+
+    .history-list {
+
+      padding: 10px;
+
+      max-height:
+        calc(100vh - 180px);
+
+      overflow-y: auto;
+    }
+
+
+    .history-row {
+
+      width: 100%;
+
+      margin-bottom: 8px;
+
+      padding: 11px;
+
+      display: grid;
+
+      grid-template-columns:
+        1fr
+        auto;
+
+      gap: 4px 8px;
+
+      border:
+        1px solid
+        #dce4ee;
+
+      border-radius: 10px;
+
+      background: #f8fafc;
+    }
+
+
+    .history-row b {
+
+      color: #0868d5;
+
+      font-size: 16px;
+    }
+
+
+    .history-row span {
+
+      color: #17253c;
+
+      font-size: 12px;
+
+      font-weight: 900;
+
+      text-align: right;
+    }
+
+
+    .history-row small {
+
+      grid-column:
+        1 / -1;
+
+      color: #64748b;
+
+      font-size: 9px;
+    }
+
+
+    .no-history {
+
+      padding:
+        30px 10px;
+
+      color: #64748b;
+
+      text-align: center;
+
+      font-size: 13px;
+    }
+
+
+    /* =====================================================
+       TABLET
+    ====================================================== */
+
+    @media (max-width: 1100px) {
+
+      .auction-layout {
+
+        grid-template-columns:
+          230px
+          minmax(0,1fr);
+
+      }
+
+
+      .history-panel {
+
+        position: static;
+
+        grid-column:
+          1 / -1;
+
+        max-height: none;
+      }
+
+
+      .history-list {
+
+        max-height: 280px;
+      }
+
+    }
+
+
+    /* =====================================================
+       MOBILE
+    ====================================================== */
+
+    @media (max-width: 700px) {
+
+      .topbar {
+
+        padding: 12px;
+
+        flex-wrap: wrap;
+
+        gap: 10px;
+      }
+
+
+      .brand-title {
+
+        font-size: 21px;
+      }
+
+
+      .brand-subtitle {
+
+        font-size: 8px;
+      }
+
+
+      .live-status {
+
+        margin-left: auto;
+
+        font-size: 10px;
+      }
+
+
+      .nav {
+
+        width: 100%;
+
+        display: grid;
+
+        grid-template-columns:
+          1fr
+          1fr;
+
+        gap: 8px;
+      }
+
+
+      .nav a {
+
+        min-height: 38px;
+
+        padding: 0 8px;
+
+        font-size: 10px;
+      }
+
+
+      .auction-layout {
+
+        width: 94%;
+
+        margin-top: 14px;
+
+        grid-template-columns: 1fr;
+
+        gap: 14px;
+      }
+
+
+      .auction-center {
+
+        order: 1;
+      }
+
+
+      .teams-panel {
+
+        order: 2;
+
+        position: static;
+
+        max-height: none;
+      }
+
+
+      .history-panel {
+
+        order: 3;
+
+        position: static;
+
+        grid-column: auto;
+
+        max-height: none;
+      }
+
+
+      .team-list {
+
+        max-height: none;
+      }
+
+
+      .player-card {
+
+        height: 420px;
+
+        min-height: 420px;
+      }
+
+
+      .empty-content h1 {
+
+        font-size: 18px;
+      }
+
+
+      .empty-content p {
+
+        font-size: 10px;
+      }
+
+
+      .auction-icon {
+
+        width: 70px;
+
+        height: 70px;
+
+        font-size: 35px;
+      }
+
+
+      .player-info {
+
+        padding:
+          70px
+          16px
+          15px;
+      }
+
+
+      .player-info h1 {
+
+        font-size: 25px;
+      }
+
+
+      .price-grid {
+
+        grid-template-columns:
+          repeat(3,1fr);
+
+        gap: 5px;
+      }
+
+
+      .price-grid > div {
+
+        padding: 7px;
+      }
+
+
+      .price-grid b {
+
+        font-size: 13px;
+      }
+
+
+      .bid-section {
+
+        grid-template-columns: 1fr;
+      }
+
+
+      .bid-box {
+
+        min-height: 75px;
+      }
+
+
+      .bid-value,
+      .highest-team {
+
+        font-size: 23px;
+      }
+
+    }
+
+
+    /* =====================================================
+       SMALL MOBILE
+    ====================================================== */
+
+    @media (max-width: 400px) {
+
+      .brand-title {
+
+        font-size: 18px;
+      }
+
+
+      .player-card {
+
+        height: 370px;
+
+        min-height: 370px;
+      }
+
+
+      .price-grid {
+
+        grid-template-columns: 1fr;
+      }
+
+    }
+
+  </style>
 
 </head>
 
 
-<body class="auction-page">
+<body>
 
 
   <!-- =====================================================
@@ -73,7 +1395,6 @@
 
     </nav>
 
-
   </header>
 
 
@@ -86,7 +1407,7 @@
 
 
     <!-- ===================================================
-         LEFT SIDE - TEAMS
+         TEAMS
     ==================================================== -->
 
     <aside class="teams-panel">
@@ -96,7 +1417,9 @@
 
         <div>
 
-          <h2>TEAMS</h2>
+          <h2>
+            TEAMS
+          </h2>
 
           <p>
             POINTS & PLAYERS
@@ -104,7 +1427,7 @@
 
         </div>
 
-        <span class="team-count">
+        <span class="badge">
           8 TEAMS
         </span>
 
@@ -115,8 +1438,6 @@
         id="teams"
         class="team-list"
       >
-
-        <!-- JavaScript loads teams here -->
 
       </div>
 
@@ -159,7 +1480,7 @@
 
 
 
-      <!-- CURRENT BID -->
+      <!-- BID -->
 
       <div class="bid-section">
 
@@ -216,7 +1537,7 @@
 
           </div>
 
-          <span class="live-badge">
+          <span class="live-badge badge">
             LIVE
           </span>
 
@@ -225,24 +1546,35 @@
 
         <div class="table-container">
 
-
           <table>
 
             <thead>
 
               <tr>
 
-                <th>PHOTO</th>
+                <th>
+                  PHOTO
+                </th>
 
-                <th>PLAYER</th>
+                <th>
+                  PLAYER
+                </th>
 
-                <th>ROLE</th>
+                <th>
+                  ROLE
+                </th>
 
-                <th>VILLAGE</th>
+                <th>
+                  VILLAGE
+                </th>
 
-                <th>STATUS</th>
+                <th>
+                  STATUS
+                </th>
 
-                <th>RESULT</th>
+                <th>
+                  RESULT
+                </th>
 
               </tr>
 
@@ -253,9 +1585,7 @@
 
             </tbody>
 
-
           </table>
-
 
         </div>
 
@@ -268,7 +1598,7 @@
 
 
     <!-- ===================================================
-         RIGHT SIDE - BID HISTORY
+         BID HISTORY
     ==================================================== -->
 
     <aside class="history-panel">
@@ -288,7 +1618,7 @@
 
         </div>
 
-        <span class="live-badge">
+        <span class="live-badge badge">
           LIVE
         </span>
 
@@ -321,11 +1651,753 @@
   <script src="/socket.io/socket.io.js"></script>
 
 
+
   <!-- =====================================================
-       APPLICATION JAVASCRIPT
+       AUCTION JAVASCRIPT
   ====================================================== -->
 
-  <script src="/app.js?v=10"></script>
+  <script>
+
+    const socket = io();
+
+
+    /* =====================================================
+       SOCKET STATE
+    ====================================================== */
+
+    socket.on(
+      "auction:state",
+      function(state) {
+
+        render(state);
+
+      }
+    );
+
+
+    /* =====================================================
+       INITIAL STATE
+    ====================================================== */
+
+    fetch(
+      "/api/public/state",
+      {
+        cache: "no-store"
+      }
+    )
+
+    .then(
+      function(response) {
+
+        if (!response.ok) {
+
+          throw new Error(
+            "Could not load auction state"
+          );
+
+        }
+
+        return response.json();
+
+      }
+    )
+
+    .then(
+      function(state) {
+
+        render(state);
+
+      }
+    )
+
+    .catch(
+      function(error) {
+
+        console.error(
+          "Auction state error:",
+          error
+        );
+
+      }
+    );
+
+
+
+    /* =====================================================
+       RENDER
+    ====================================================== */
+
+    function render(state) {
+
+
+      state = state || {};
+
+
+      const auction =
+        state.auction || {};
+
+
+
+      /* ===================================================
+         CURRENT BID
+      ==================================================== */
+
+      const currentBid =
+        document.getElementById(
+          "currentBid"
+        );
+
+
+      if (currentBid) {
+
+        currentBid.textContent =
+          Number(
+            auction.currentBid || 0
+          ).toLocaleString(
+            "en-IN"
+          );
+
+      }
+
+
+
+      /* ===================================================
+         HIGHEST BIDDER
+      ==================================================== */
+
+      const highestTeam =
+        document.getElementById(
+          "highestTeam"
+        );
+
+
+      if (highestTeam) {
+
+        highestTeam.textContent =
+          auction.highestTeam ||
+          "—";
+
+      }
+
+
+
+      /* ===================================================
+         TEAMS
+      ==================================================== */
+
+      const teamsContainer =
+        document.getElementById(
+          "teams"
+        );
+
+
+      if (teamsContainer) {
+
+
+        const teams =
+          state.teams || [];
+
+
+        if (!teams.length) {
+
+          teamsContainer.innerHTML = `
+
+            <div class="no-history">
+              No teams available
+            </div>
+
+          `;
+
+        } else {
+
+
+          teamsContainer.innerHTML =
+
+            teams
+              .map(
+                function(team) {
+
+                  const remaining =
+                    Number(
+                      team.remainingPoints || 0
+                    );
+
+
+                  return `
+
+                    <div class="team-row">
+
+                      <div>
+
+                        <b>
+                          ${esc(team.code)}
+                        </b>
+
+                        ${esc(team.name)}
+
+                      </div>
+
+
+                      <strong>
+
+                        ₹${remaining.toLocaleString(
+                          "en-IN"
+                        )}
+
+                      </strong>
+
+
+                      <small>
+
+                        ${
+                          team.playerCount || 0
+                        }/${team.maxPlayers || 25}
+                        players
+
+                      </small>
+
+                    </div>
+
+                  `;
+
+                }
+              )
+              .join("");
+
+        }
+
+      }
+
+
+
+      /* ===================================================
+         PLAYER CARD
+      ==================================================== */
+
+      const player =
+        state.currentPlayer;
+
+
+      const playerCard =
+        document.getElementById(
+          "playerCard"
+        );
+
+
+      if (!playerCard) {
+
+        return;
+
+      }
+
+
+
+      /* ===================================================
+         NO PLAYER
+      ==================================================== */
+
+      if (!player) {
+
+
+        playerCard.className =
+          "player-card empty";
+
+
+        playerCard.innerHTML = `
+
+          <div class="empty-content">
+
+            <div class="auction-icon">
+              🏏
+            </div>
+
+            <h1>
+              AUCTION WILL START SOON
+            </h1>
+
+            <p>
+              Waiting for the administrator to start the auction
+            </p>
+
+          </div>
+
+        `;
+
+      }
+
+
+      /* ===================================================
+         PLAYER EXISTS
+      ==================================================== */
+
+      else {
+
+
+        playerCard.className =
+          "player-card";
+
+
+        const photo =
+          player.photoUrl ||
+          "/images/default-player.jpeg";
+
+
+        const base =
+          Number(
+            auction.baseBid || 50
+          );
+
+
+        const current =
+          Number(
+            auction.currentBid || 0
+          );
+
+
+        playerCard.innerHTML = `
+
+          <div class="photo-wrap">
+
+            <img
+              src="${esc(photo)}"
+              alt="${esc(player.name)}"
+              onerror="
+                this.style.display='none'
+              "
+            >
+
+          </div>
+
+
+          <div class="player-info">
+
+
+            <div class="auction-tag">
+
+              ${
+                auction.status === "LIVE"
+                  ? "🔴 BIDDING LIVE"
+                  : esc(
+                      auction.status ||
+                      "AUCTION"
+                    )
+              }
+
+            </div>
+
+
+            <h1>
+              ${esc(player.name)}
+            </h1>
+
+
+            <div class="role">
+
+              ${esc(
+                player.role ||
+                "Player"
+              )}
+
+            </div>
+
+
+            <div class="details">
+
+              📍 ${esc(
+                player.village ||
+                "—"
+              )}
+
+            </div>
+
+
+            <div class="price-grid">
+
+
+              <div>
+
+                <small>
+                  BASE PRICE
+                </small>
+
+                <b>
+
+                  ₹${base.toLocaleString(
+                    "en-IN"
+                  )}
+
+                </b>
+
+              </div>
+
+
+              <div>
+
+                <small>
+                  CURRENT BID
+                </small>
+
+                <b>
+
+                  ₹${(
+                    current || base
+                  ).toLocaleString(
+                    "en-IN"
+                  )}
+
+                </b>
+
+              </div>
+
+
+              <div>
+
+                <small>
+                  HIGHEST BIDDER
+                </small>
+
+                <b>
+
+                  ${esc(
+                    auction.highestTeam ||
+                    "—"
+                  )}
+
+                </b>
+
+              </div>
+
+
+            </div>
+
+
+          </div>
+
+        `;
+
+      }
+
+
+
+      /* ===================================================
+         BID HISTORY
+      ==================================================== */
+
+      const historyContainer =
+        document.getElementById(
+          "history"
+        );
+
+
+      if (historyContainer) {
+
+
+        const history =
+          auction.bidHistory || [];
+
+
+        if (!history.length) {
+
+
+          historyContainer.innerHTML = `
+
+            <div class="no-history">
+              No bids yet
+            </div>
+
+          `;
+
+        } else {
+
+
+          historyContainer.innerHTML =
+
+            history
+              .slice()
+              .reverse()
+              .map(
+                function(bid) {
+
+
+                  let time = "";
+
+
+                  try {
+
+                    time =
+                      new Date(
+                        bid.at
+                      ).toLocaleTimeString();
+
+                  } catch(e) {
+
+                    time = "";
+
+                  }
+
+
+                  return `
+
+                    <div class="history-row">
+
+                      <b>
+
+                        ₹${Number(
+                          bid.amount || 0
+                        ).toLocaleString(
+                          "en-IN"
+                        )}
+
+                      </b>
+
+
+                      <span>
+
+                        ${esc(
+                          bid.team ||
+                          "—"
+                        )}
+
+                      </span>
+
+
+                      <small>
+
+                        ${esc(time)}
+
+                      </small>
+
+                    </div>
+
+                  `;
+
+                }
+              )
+              .join("");
+
+        }
+
+      }
+
+
+
+      /* ===================================================
+         PLAYER TABLE
+      ==================================================== */
+
+      const playersContainer =
+        document.getElementById(
+          "players"
+        );
+
+
+      if (playersContainer) {
+
+
+        const players =
+          state.players || [];
+
+
+        if (!players.length) {
+
+
+          playersContainer.innerHTML = `
+
+            <tr>
+
+              <td
+                colspan="6"
+                style="
+                  text-align:center;
+                  padding:30px;
+                  color:#64748b;
+                "
+              >
+
+                No players registered yet
+
+              </td>
+
+            </tr>
+
+          `;
+
+        } else {
+
+
+          playersContainer.innerHTML =
+
+            players
+              .map(
+                function(player) {
+
+
+                  const status =
+                    String(
+                      player.status ||
+                      "PENDING"
+                    ).toLowerCase();
+
+
+                  let result = "—";
+
+
+                  if (
+                    player.status ===
+                    "SOLD"
+                  ) {
+
+                    result =
+
+                      `${esc(
+                        player.soldTeam ||
+                        ""
+                      )} • ₹${Number(
+                        player.soldPoints ||
+                        0
+                      ).toLocaleString(
+                        "en-IN"
+                      )}`;
+
+                  }
+
+
+                  return `
+
+                    <tr>
+
+
+                      <td>
+
+                        <img
+
+                          class="thumb"
+
+                          src="${esc(
+                            player.photoUrl ||
+                            "/images/default-player.jpeg"
+                          )}"
+
+                          alt="${esc(
+                            player.name
+                          )}"
+
+                          onerror="
+                            this.style.display='none'
+                          "
+
+                        >
+
+                      </td>
+
+
+                      <td>
+
+                        <strong>
+
+                          ${esc(
+                            player.name
+                          )}
+
+                        </strong>
+
+                      </td>
+
+
+                      <td>
+
+                        ${esc(
+                          player.role ||
+                          "—"
+                        )}
+
+                      </td>
+
+
+                      <td>
+
+                        ${esc(
+                          player.village ||
+                          "—"
+                        )}
+
+                      </td>
+
+
+                      <td>
+
+                        <span
+                          class="
+                            status
+                            ${status}
+                          "
+                        >
+
+                          ${esc(
+                            player.status ||
+                            "PENDING"
+                          )}
+
+                        </span>
+
+                      </td>
+
+
+                      <td>
+
+                        ${result}
+
+                      </td>
+
+
+                    </tr>
+
+                  `;
+
+                }
+              )
+              .join("");
+
+        }
+
+      }
+
+    }
+
+
+
+    /* =====================================================
+       HTML ESCAPE
+    ====================================================== */
+
+    function esc(value) {
+
+      return String(
+        value ?? ""
+      ).replace(
+        /[&<>"']/g,
+        function(character) {
+
+          return {
+
+            "&": "&amp;",
+
+            "<": "&lt;",
+
+            ">": "&gt;",
+
+            '"': "&quot;",
+
+            "'": "&#039;"
+
+          }[character];
+
+        }
+      );
+
+    }
+
+  </script>
 
 
 </body>
